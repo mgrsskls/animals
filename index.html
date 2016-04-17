@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Michael Großklaus - Freelancing frontend-developer Hamburg</title>
+  <meta name="description" content="I'm a freelancing frontend-developer based in Hamburg, Germany. You can hire me for HTML, CSS and JavaScript jobs.">
+  <meta name="viewport" content="initial-scale=1">
+  <link rel="canonical" href="https://animals.mgrossklaus.de/">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+  <style>
+      /* http://meyerweb.com/eric/tools/css/reset/
+     v2.0 | 20110126
+     License: none (public domain)
+     */
+
+         html, body, div, span, applet, object, iframe,
+         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+         a, abbr, acronym, address, big, cite, code,
+         del, dfn, em, img, ins, kbd, q, s, samp,
+         small, strike, strong, sub, sup, tt, var,
+         b, u, i, center,
+         dl, dt, dd, ol, ul, li,
+         fieldset, form, label, legend,
+         table, caption, tbody, tfoot, thead, tr, th, td,
+         article, aside, canvas, details, embed,
+         figure, figcaption, footer, header, hgroup,
+         menu, nav, output, ruby, section, summary,
+         time, mark, audio, video {
+          margin: 0;
+          padding: 0;
+          border: 0;
+          font-size: 100%;
+          font: inherit;
+          vertical-align: baseline;
+        }
+        ol, ul {
+          list-style: none;
+        }
+        svg {
+          display: block;
+          margin: 0 auto;
+        }
+
+        html,
+        body {
+          height: 100%;
+        }
+
+        body {
+          background: currentColor radial-gradient(rgba(255,255,255,.25), rgba(255,255,255,0));
+          transition: color 1s ease;
+        }
+        .current1 {
+          color: #d29c63;
+        }
+        .current2 {
+          color: #e7b79f;
+        }
+        .current3 {
+          color: #ffd673;
+        }
+        .current4 {
+          color: #a6c3a2;
+        }
+        .current5 {
+          color: #839db3;
+        }
+        .current6 {
+          color: #6c5d73;
+        }
+        .current7 {
+          color: #7b5a67;
+        }
+        .current8 {
+          color: #a6857d;
+        }
+
+        @keyframes fly {
+          0%  { transform: translateY(0); }
+          10% { transform: translateY(5%) }
+          25% { transform: translateY(-30%) rotateY(-90deg); }
+          60% { transform: translateY(5%); }
+        }
+
+        @keyframes shadow {
+          0%  { transform: scale(1); }
+          10% { transform: scale(1.05); }
+          25% { transform: scale(0.75); opacity: .75; }
+          60% { transform: scale(1.05); }
+        }
+
+        .animal-container {
+          width: 35vh;
+          height: 35vh;
+          position: absolute;
+          bottom: 35vh;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 2vh;
+        }
+        .animal-container::after {
+          content: '';
+          display: block;
+          height: 5em;
+          background: radial-gradient(rgba(0,0,0,.25), rgba(0,0,0,0) 75%);
+          position: absolute;
+          bottom: -10em;
+          left: 0;
+          right: 0;
+          animation-name: shadow;
+        }
+        .animal {
+          height: 100%;
+          font-size: inherit;
+          position: relative;
+          animation-name: fly;
+        }
+        .animal-container::after,
+        .animal {
+          animation-duration: 5s;
+          animation-timing-function: ease;
+          animation-iteration-count: infinite;
+          animation-delay: 1.25s;
+        }
+        .animal__tile {
+          width: 50%;
+          height: 50%;
+          float: left;
+          position: relative;
+          overflow: hidden;
+        }
+        .animal::before,
+        .animal::after,
+        .animal__tile::before,
+        .animal__tile::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-radius: 50%;
+        }
+        .animal__tile,
+        .animal__tile::before {
+          transition: all 1s ease;
+        }
+        .animal__tile::before {
+          top: 0;
+          left: 0;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,0));
+        }
+        .animal::before,
+        .animal::after,
+        .animal__tile::after {
+          width: .8em;
+          height: .8em;
+          background: #000;
+          opacity: 0;
+          z-index: 1;
+        }
+        .animal__tile:nth-child(odd) {
+          clear: both;
+        }
+
+        /* +animal1 */
+        .animal1 .animal__tile:nth-child(1)::before,
+        .animal1 .animal__tile:nth-child(2)::before {
+          background-color: #864703;
+        }
+        .animal1 .animal__tile:nth-child(1)::before {
+          transform: translateX(-50%);
+        }
+        .animal1 .animal__tile:nth-child(3)::before,
+        .animal1 .animal__tile:nth-child(4)::before {
+          background-color: #aa5b07;
+        }
+        .animal1 .animal__tile:nth-child(3)::before {
+          transform: translateY(-50%);
+        }
+        .animal1 .animal__tile:nth-child(4)::before {
+          transform: translateX(-50%) translateY(-50%);
+        }
+        .animal1::after,
+        .animal1 .animal__tile:nth-child(3)::after,
+        .animal1 .animal__tile:nth-child(4)::after {
+          opacity: 1;
+        }
+        .animal1 .animal__tile:nth-child(3)::after,
+        .animal1 .animal__tile:nth-child(4)::after {
+          top: 40%;
+        }
+        .animal1 .animal__tile:nth-child(3)::after {
+          left: 75%;
+        }
+        .animal1 .animal__tile:nth-child(4)::after {
+          right: 75%;
+        }
+        .animal1::after {
+          left: 50%;
+          top: 85%;
+          transform: translateX(-50%);
+        }
+
+        /* +animal2 */
+        .animal2 .animal__tile:nth-child(1)::before,
+        .animal2 .animal__tile:nth-child(2)::before,
+        .animal2 .animal__tile:nth-child(4)::before {
+          background-color: #ea4d00;
+        }
+        .animal2 .animal__tile:nth-child(2)::before {
+          transform: translateX(-50%);
+        }
+        .animal2 .animal__tile:nth-child(3)::before {
+          transform: translateX(-50%) translateY(-50%);
+          background-color: #ed7a42;
+        }
+        .animal2 .animal__tile:nth-child(4)::before {
+          transform: translateX(-50%) translateY(-50%);
+        }
+        .animal2::after {
+          opacity: 1;
+          left: -1.5%;
+          top: 60%;
+        }
+
+        /* +animal4 */
+        .animal3 .animal__tile:nth-child(1)::before,
+        .animal3 .animal__tile:nth-child(3)::before {
+          background-color: #eea800;
+        }
+        .animal3 .animal__tile:nth-child(1)::before {
+          transform: translateX(-50%);
+        }
+        .animal3 .animal__tile:nth-child(2)::before {
+          transform: translateX(-50%);
+          background-color: #ffc22e;
+        }
+        .animal3 .animal__tile:nth-child(3)::before {
+          transform: translateY(-50%);
+        }
+        .animal3 .animal__tile:nth-child(4)::before {
+          display: none;
+        }
+        .animal3::after,
+        .animal3 .animal__tile:nth-child(2)::after {
+          opacity: 1;
+        }
+        .animal3::after {
+          top: 50%;
+          right: -3%;
+        }
+        .animal3 .animal__tile:nth-child(2)::after {
+          top: 75%;
+          left: 75%;
+        }
+
+        /* +animal4 */
+        .animal4 .animal__tile:nth-child(1)::before,
+        .animal4 .animal__tile:nth-child(4)::before {
+          background-color: #2fbb1d;
+        }
+        .animal4 .animal__tile:nth-child(2)::before {
+          background-color: #20a10f;
+          transform: translateX(-50%);
+        }
+        .animal4 .animal__tile:nth-child(3)::before {
+          display: none;
+        }
+        .animal4 .animal__tile:nth-child(4)::before {
+          transform: translateY(-50%);
+        }
+        .animal4 .animal__tile:nth-child(1)::after {
+          opacity: 1;
+          top: 40%;
+          left: 80%;
+        }
+
+        /* +animal5 */
+        .animal5 .animal__tile:nth-child(1)::before,
+        .animal5 .animal__tile:nth-child(3)::before {
+          background-color: #1b69aa;
+        }
+        .animal5 .animal__tile:nth-child(1)::before {
+          transform: translateX(-50%) translateY(-50%);
+        }
+        .animal5 .animal__tile:nth-child(2) {
+          display: none;
+        }
+        .animal5 .animal__tile:nth-child(3)::before {
+          transform: translateY(-50%);
+        }
+        .animal5 .animal__tile:nth-child(4)::before {
+          background-color: #3482c4;
+          transform: translateX(-50%);
+        }
+        .animal5 .animal__tile:nth-child(4)::after {
+          opacity: 1;
+          left: 30%;
+          top: 50%;
+        }
+
+        /* +animal6 */
+        .animal6 .animal__tile:nth-child(2)::before,
+        .animal6 .animal__tile:nth-child(3)::before {
+          background-color: #360a4d;
+        }
+        .animal6 .animal__tile:nth-child(1)::before {
+          display: none;
+        }
+        .animal6 .animal__tile:nth-child(4)::before {
+          transform: translateY(-50%);
+          background-color: #5b217a;
+        }
+        .animal6 .animal__tile:nth-child(4)::before {
+          transform: translateX(-50%) translateY(-50%);
+        }
+        .animal6::after,
+        .animal6 .animal__tile:nth-child(1)::after {
+          opacity: 1;
+        }
+        .animal6::after {
+          left: 45%;
+          top: 40%;
+        }
+        .animal6 .animal__tile:nth-child(1)::after {
+          left: 80%;
+          top: 88%;
+        }
+
+        /* +animal7 */
+        .animal7 .animal__tile:nth-child(1)::before,
+        .animal7 .animal__tile:nth-child(3)::before {
+          background-color: #7a2a49;
+        }
+        .animal7 .animal__tile:nth-child(2)::before {
+          transform: translateX(-50%) translateY(-50%);
+          background-color: #a3465c;
+        }
+        .animal7 .animal__tile:nth-child(3)::before {
+          transform: translateY(-50%);
+        }
+        .animal7 .animal__tile:nth-child(4)::before {
+          display: none;
+        }
+        .animal7::after,
+        .animal7 .animal__tile:nth-child(2)::after {
+          opacity: 1;
+        }
+        .animal7::after {
+          top: -1.5%;
+          right: -1.5%;
+        }
+        .animal7 .animal__tile:nth-child(2)::after {
+          top: 20%;
+          left: 20%;
+        }
+
+        /* +animal8 */
+        .animal8 .animal__tile:nth-child(1)::before,
+        .animal8 .animal__tile:nth-child(2)::before,
+        .animal8 .animal__tile:nth-child(4)::before {
+          background-color: #a06050;
+        }
+        .animal8 .animal__tile:nth-child(2)::before {
+          transform: translateX(-50%);
+        }
+        .animal8 .animal__tile:nth-child(3)::before {
+          transform: translateX(-50%) translateY(-50%);
+          background-color: #b7897e;
+        }
+        .animal8 .animal__tile:nth-child(4)::before {
+          transform: translateX(-50%) translateY(-50%);
+        }
+        .animal8::before,
+        .animal8::after,
+        .animal8 .animal__tile:nth-child(3)::after {
+          opacity: 1;
+        }
+        .animal8::before {
+          bottom: -1.5%;
+          left: -1.5%;
+        }
+        .animal8::after {
+          top: 72.5%;
+          left: 12.5%;
+        }
+        .animal8 .animal__tile:nth-child(3)::after {
+          top: 45%;
+          left: 50%;
+        }
+      </style>
+    </head>
+    <body class="current1">
+
+      <div class="animal-container">
+        <div class="animal animal1" id="animal">
+          <div class="animal__tile"></div>
+          <div class="animal__tile"></div>
+          <div class="animal__tile"></div>
+          <div class="animal__tile"></div>
+        </div>
+      </div>
+
+      <script>
+        var animal  = document.getElementById('animal'),
+            oldI    = 1,
+            newI    = 2;
+
+        function changeAnimal() {
+          animal.classList.remove('animal' + oldI);
+          animal.classList.add('animal' + newI);
+          document.body.classList.remove('current' + oldI);
+          document.body.classList.add('current' + newI);
+          oldI = newI;
+          newI++;
+
+          if (newI === 9) {
+            newI = 1;
+          }
+        }
+
+        setTimeout(function() {
+          changeAnimal();
+
+          setInterval(function() {
+          changeAnimal();
+          }, 5000);
+        }, 2500);
+      </script>
+
+  </body>
+</html>
