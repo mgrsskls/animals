@@ -48,7 +48,7 @@
 
         body {
           background: currentColor radial-gradient(rgba(255,255,255,.25), rgba(255,255,255,0));
-          transition: color 1s ease;
+          transition: color 3s ease;
         }
         .current1 {
           color: #d29c63;
@@ -407,10 +407,17 @@
             newI    = 2;
 
         function changeAnimal() {
+          var bgOldI = oldI,
+              bgNewI = newI;
+
           animal.classList.remove('animal' + oldI);
           animal.classList.add('animal' + newI);
-          document.body.classList.remove('current' + oldI);
-          document.body.classList.add('current' + newI);
+
+          setTimeout(function(){
+            document.body.classList.remove('current' + bgOldI);
+            document.body.classList.add('current' + bgNewI);
+          }, 1000);
+
           oldI = newI;
           newI++;
 
