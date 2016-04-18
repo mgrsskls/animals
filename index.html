@@ -49,21 +49,20 @@
         body {
           background: currentColor radial-gradient(at bottom, rgba(255,255,255,.4), rgba(255,255,255,0));
           color: #cf9151;
+          box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
           transition: all 3s ease;
         }
 
         @keyframes fly {
-          30% { transform: translateY(0); }
-          40% { transform: translateY(10%); }
-          50% { transform: translateY(-30%) rotateY(-90deg); }
-          75% { transform: translateY(10%); }
+          5% { transform: translateY(10%); }
+          15% { transform: translateY(-30%) rotateY(-90deg); }
+          45% { transform: translateY(10%); }
         }
 
         @keyframes shadow {
-          30% { transform: scale(1); }
-          40% { transform: scale(1.1); }
-          50% { transform: scale(0.7); opacity: .7; }
-          75% { transform: scale(1.1); }
+          10% { transform: scale(1.1); }
+          20% { transform: scale(0.7); opacity: .7; }
+          45% { transform: scale(1.1); }
         }
 
         .animal-container {
@@ -79,7 +78,7 @@
           content: '';
           display: block;
           height: 5em;
-          background: radial-gradient(rgba(0,0,0,.25), transparent 75%);
+          background: radial-gradient(rgba(0,0,0,.2), transparent 75%);
           position: absolute;
           bottom: -10em;
           left: 0;
@@ -94,8 +93,9 @@
         }
         .animal-container::after,
         .animal {
-          animation-duration: 7s;
+          animation-duration: 6s;
           animation-iteration-count: infinite;
+          animation-delay: 1.5s;
         }
         .animal__tile {
           width: 50%;
@@ -115,7 +115,7 @@
         }
         .animal__tile,
         .animal__tile::before {
-          transition: all 1s ease;
+          transition: all transform ease;
         }
         .animal__tile::before {
           top: 0;
@@ -208,7 +208,7 @@
         }
         .animal3 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%);
-          background-color: #ffc22e;
+          background-color: #efb425;
         }
         .animal3 .animal__tile:nth-child(3)::before {
           transform: translateY(-50%);
@@ -378,10 +378,12 @@
 
       <script>
         var animal            = document.getElementById('animal'),
-            animationDuration = parseInt(window.getComputedStyle(animal)['animation-duration'], 10) * 1000,
+            computedStyle     = window.getComputedStyle(animal),
+            animationDuration = parseInt(computedStyle['animation-duration'], 10) * 1000,
+            animationDelay    = parseInt(computedStyle['animation-delay'], 10) * 1000,
             oldIndex          = 0,
             newIndex          = oldIndex + 1,
-            colors            = ['#cf9151', '#e78d61', '#ffd46d', '#a6c3a2', '#839db3', '#6c5d73', '#7b5a67', '#a47c72'],
+            colors            = ['#cf9151', '#e78d61', '#ebc364', '#a6c3a2', '#839db3', '#6c5d73', '#7b5a67', '#a47c72'],
             numberColors      = colors.length;
 
         function changeAnimal() {
@@ -404,7 +406,7 @@
           setInterval(function() {
             changeAnimal();
           }, animationDuration);
-        }, animationDuration / 2);
+        }, animationDuration / 4 + animationDelay);
       </script>
 
   </body>
