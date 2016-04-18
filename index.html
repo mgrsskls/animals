@@ -47,8 +47,8 @@
         }
 
         body {
-          background: currentColor radial-gradient(at bottom, rgba(255,255,255,.4), rgba(255,255,255,0));
-          color: #cf9151;
+          background: currentColor radial-gradient(at bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
+          color: #a9661e;
           box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
           transition: all 3s ease;
         }
@@ -60,8 +60,8 @@
         }
 
         @keyframes shadow {
-          10% { transform: scale(1.1); }
-          20% { transform: scale(0.7); opacity: .7; }
+          5% { transform: scale(1.1); }
+          15% { transform: scale(0.7); opacity: .75; }
           45% { transform: scale(1.1); }
         }
 
@@ -122,7 +122,7 @@
           left: 0;
           width: 200%;
           height: 200%;
-          background: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,0));
+          background: currentColor;
         }
         .animal::before,
         .animal::after,
@@ -138,16 +138,15 @@
         }
 
         /* +animal1 */
-        .animal1 .animal__tile:nth-child(1)::before,
-        .animal1 .animal__tile:nth-child(2)::before {
-          background-color: #864703;
+        .animal1 {
+          color: #a9661e;
         }
         .animal1 .animal__tile:nth-child(1)::before {
           transform: translateX(-50%);
         }
         .animal1 .animal__tile:nth-child(3)::before,
         .animal1 .animal__tile:nth-child(4)::before {
-          background-color: #aa5b07;
+          opacity: .8;
         }
         .animal1 .animal__tile:nth-child(3)::before {
           transform: translateY(-50%);
@@ -177,17 +176,15 @@
         }
 
         /* +animal2 */
-        .animal2 .animal__tile:nth-child(1)::before,
-        .animal2 .animal__tile:nth-child(2)::before,
-        .animal2 .animal__tile:nth-child(4)::before {
-          background-color: #ea4d00;
+        .animal2 {
+          color: #e76132;
         }
         .animal2 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%);
         }
         .animal2 .animal__tile:nth-child(3)::before {
           transform: translateX(-50%) translateY(-50%);
-          background-color: #ed7a42;
+          opacity: .75;
         }
         .animal2 .animal__tile:nth-child(4)::before {
           transform: translateX(-50%) translateY(-50%);
@@ -198,17 +195,16 @@
           top: 60%;
         }
 
-        /* +animal4 */
-        .animal3 .animal__tile:nth-child(1)::before,
-        .animal3 .animal__tile:nth-child(3)::before {
-          background-color: #eea800;
+        /* +animal3 */
+        .animal3 {
+          color: #eea800;
         }
         .animal3 .animal__tile:nth-child(1)::before {
           transform: translateX(-50%);
         }
         .animal3 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%);
-          background-color: #efb425;
+          opacity: .6;
         }
         .animal3 .animal__tile:nth-child(3)::before {
           transform: translateY(-50%);
@@ -230,12 +226,13 @@
         }
 
         /* +animal4 */
-        .animal4 .animal__tile:nth-child(1)::before,
-        .animal4 .animal__tile:nth-child(4)::before {
-          background-color: #2fbb1d;
+        .animal4 {
+          color: #4bba3d;
+        }
+        .animal4 .animal__tile:nth-child(1)::before {
+          opacity: .7;
         }
         .animal4 .animal__tile:nth-child(2)::before {
-          background-color: #20a10f;
           transform: translateX(-50%);
         }
         .animal4 .animal__tile:nth-child(3)::before {
@@ -251,9 +248,8 @@
         }
 
         /* +animal5 */
-        .animal5 .animal__tile:nth-child(1)::before,
-        .animal5 .animal__tile:nth-child(3)::before {
-          background-color: #1b69aa;
+        .animal5 {
+          color: #1b69aa;
         }
         .animal5 .animal__tile:nth-child(1)::before {
           transform: translateX(-50%) translateY(-50%);
@@ -265,8 +261,8 @@
           transform: translateY(-50%);
         }
         .animal5 .animal__tile:nth-child(4)::before {
-          background-color: #3482c4;
           transform: translateX(-50%);
+          opacity: .75;
         }
         .animal5 .animal__tile:nth-child(4)::after {
           opacity: 1;
@@ -275,16 +271,15 @@
         }
 
         /* +animal6 */
-        .animal6 .animal__tile:nth-child(2)::before,
-        .animal6 .animal__tile:nth-child(3)::before {
-          background-color: #360a4d;
+        .animal6 {
+          color: #360a4d;
         }
         .animal6 .animal__tile:nth-child(1)::before {
           display: none;
         }
         .animal6 .animal__tile:nth-child(4)::before {
           transform: translateY(-50%);
-          background-color: #5b217a;
+          opacity: .8;
         }
         .animal6 .animal__tile:nth-child(4)::before {
           transform: translateX(-50%) translateY(-50%);
@@ -303,13 +298,12 @@
         }
 
         /* +animal7 */
-        .animal7 .animal__tile:nth-child(1)::before,
-        .animal7 .animal__tile:nth-child(3)::before {
-          background-color: #7a2a49;
+        .animal7 {
+          color: #7a2a49;
         }
         .animal7 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%) translateY(-50%);
-          background-color: #a3465c;
+          opacity: .8;
         }
         .animal7 .animal__tile:nth-child(3)::before {
           transform: translateY(-50%);
@@ -331,17 +325,15 @@
         }
 
         /* +animal8 */
-        .animal8 .animal__tile:nth-child(1)::before,
-        .animal8 .animal__tile:nth-child(2)::before,
-        .animal8 .animal__tile:nth-child(4)::before {
-          background-color: #a06050;
+        .animal8 {
+          color: #a06050;
         }
         .animal8 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%);
         }
         .animal8 .animal__tile:nth-child(3)::before {
           transform: translateX(-50%) translateY(-50%);
-          background-color: #b7897e;
+          opacity: .8;
         }
         .animal8 .animal__tile:nth-child(4)::before {
           transform: translateX(-50%) translateY(-50%);
@@ -390,7 +382,7 @@
           animal.classList.remove('animal' + parseInt(oldIndex + 1, 10))
           animal.classList.add('animal' + parseInt(newIndex + 1, 10));
 
-          document.body.style.color = colors[newIndex];
+          document.body.style.color = window.getComputedStyle(animal).color;
 
           oldIndex = newIndex;
           newIndex++;
