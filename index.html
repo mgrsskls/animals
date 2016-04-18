@@ -47,46 +47,23 @@
         }
 
         body {
-          background: currentColor radial-gradient(rgba(255,255,255,.25), rgba(255,255,255,0));
+          background: currentColor radial-gradient(at bottom, rgba(255,255,255,.4), rgba(255,255,255,0));
+          color: #cf9151;
           transition: all 3s ease;
-        }
-        .current1 {
-          color: #d29c63;
-        }
-        .current2 {
-          color: #e7b79f;
-        }
-        .current3 {
-          color: #ffd673;
-        }
-        .current4 {
-          color: #a6c3a2;
-        }
-        .current5 {
-          color: #839db3;
-        }
-        .current6 {
-          color: #6c5d73;
-        }
-        .current7 {
-          color: #7b5a67;
-        }
-        .current8 {
-          color: #a6857d;
         }
 
         @keyframes fly {
-          0%  { transform: translateY(0); }
-          10% { transform: translateY(5%) }
-          25% { transform: translateY(-30%) rotateY(-90deg); }
-          60% { transform: translateY(5%); }
+          30% { transform: translateY(0); }
+          40% { transform: translateY(10%); }
+          50% { transform: translateY(-30%) rotateY(-90deg); }
+          75% { transform: translateY(10%); }
         }
 
         @keyframes shadow {
-          0%  { transform: scale(1); }
-          10% { transform: scale(1.05); }
-          25% { transform: scale(0.75); opacity: .75; }
-          60% { transform: scale(1.05); }
+          30% { transform: scale(1); }
+          40% { transform: scale(1.1); }
+          50% { transform: scale(0.7); opacity: .7; }
+          75% { transform: scale(1.1); }
         }
 
         .animal-container {
@@ -102,7 +79,7 @@
           content: '';
           display: block;
           height: 5em;
-          background: radial-gradient(rgba(0,0,0,.25), rgba(0,0,0,0) 75%);
+          background: radial-gradient(rgba(0,0,0,.25), transparent 75%);
           position: absolute;
           bottom: -10em;
           left: 0;
@@ -117,10 +94,8 @@
         }
         .animal-container::after,
         .animal {
-          animation-duration: 5s;
-          animation-timing-function: ease;
+          animation-duration: 7s;
           animation-iteration-count: infinite;
-          animation-delay: 1.25s;
         }
         .animal__tile {
           width: 50%;
@@ -390,7 +365,7 @@
         }
       </style>
     </head>
-    <body class="current1">
+    <body>
 
       <div class="animal-container">
         <div class="animal animal1" id="animal">
@@ -402,27 +377,24 @@
       </div>
 
       <script>
-        var animal  = document.getElementById('animal'),
-            oldI    = 1,
-            newI    = 2;
+        var animal            = document.getElementById('animal'),
+            animationDuration = parseInt(window.getComputedStyle(animal)['animation-duration'], 10) * 1000,
+            oldIndex          = 0,
+            newIndex          = oldIndex + 1,
+            colors            = ['#cf9151', '#e78d61', '#ffd46d', '#a6c3a2', '#839db3', '#6c5d73', '#7b5a67', '#a47c72'],
+            numberColors      = colors.length;
 
         function changeAnimal() {
-          var bgOldI = oldI,
-              bgNewI = newI;
+          animal.classList.remove('animal' + parseInt(oldIndex + 1, 10))
+          animal.classList.add('animal' + parseInt(newIndex + 1, 10));
 
-          animal.classList.remove('animal' + oldI);
-          animal.classList.add('animal' + newI);
+          document.body.style.color = colors[newIndex];
 
-          setTimeout(function(){
-            document.body.classList.remove('current' + bgOldI);
-            document.body.classList.add('current' + bgNewI);
-          }, 1500);
+          oldIndex = newIndex;
+          newIndex++;
 
-          oldI = newI;
-          newI++;
-
-          if (newI === 9) {
-            newI = 1;
+          if (newIndex === numberColors) {
+            newIndex = 0;
           }
         }
 
@@ -430,9 +402,9 @@
           changeAnimal();
 
           setInterval(function() {
-          changeAnimal();
-          }, 5000);
-        }, 2500);
+            changeAnimal();
+          }, animationDuration);
+        }, animationDuration / 2);
       </script>
 
   </body>
