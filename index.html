@@ -50,7 +50,7 @@
           background: currentColor radial-gradient(at bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
           color: #a9661e;
           box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
-          transition: all 3s ease;
+          transition: all 5s ease;
         }
 
         @keyframes fly {
@@ -382,7 +382,9 @@
           animal.classList.remove('animal' + parseInt(oldIndex + 1, 10))
           animal.classList.add('animal' + parseInt(newIndex + 1, 10));
 
-          document.body.style.color = window.getComputedStyle(animal).color;
+          setTimeout(function() {
+            document.body.style.color = window.getComputedStyle(animal).color;
+          }, 1500);
 
           oldIndex = newIndex;
           newIndex++;
