@@ -50,7 +50,7 @@
           background: currentColor radial-gradient(at bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
           color: #a9661e;
           box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
-          transition: all 5s ease;
+          transition: all 3.6s ease;
         }
 
         @keyframes fly {
@@ -61,7 +61,7 @@
 
         @keyframes shadow {
           5% { transform: scale(1.1); }
-          15% { transform: scale(0.7); opacity: .75; }
+          15% { transform: scale(0.7); opacity: .7; }
           45% { transform: scale(1.1); }
         }
 
@@ -95,7 +95,7 @@
         .animal {
           animation-duration: 6s;
           animation-iteration-count: infinite;
-          animation-delay: 1.5s;
+          animation-delay: 1s;
         }
         .animal__tile {
           width: 50%;
@@ -369,14 +369,14 @@
       </div>
 
       <script>
-        var animal            = document.getElementById('animal'),
-            computedStyle     = window.getComputedStyle(animal),
-            animationDuration = parseInt(computedStyle['animation-duration'], 10) * 1000,
-            animationDelay    = parseInt(computedStyle['animation-delay'], 10) * 1000,
-            oldIndex          = 0,
-            newIndex          = oldIndex + 1,
-            colors            = ['#cf9151', '#e78d61', '#ebc364', '#a6c3a2', '#839db3', '#6c5d73', '#7b5a67', '#a47c72'],
-            numberColors      = colors.length;
+        var animal              = document.getElementById('animal'),
+            computedStyle       = window.getComputedStyle(animal),
+            animationDuration   = parseInt(computedStyle['animation-duration'], 10) * 1000,
+            animationDelay      = parseInt(computedStyle['animation-delay'], 10) * 1000,
+            changeAnimalTimeout = animationDuration * 0.15,
+            changeBgTimeout     = animationDuration * 0.45 - changeAnimalTimeout,
+            oldIndex            = 0,
+            newIndex            = oldIndex + 1;
 
         function changeAnimal() {
           animal.classList.remove('animal' + parseInt(oldIndex + 1, 10))
@@ -384,23 +384,29 @@
 
           setTimeout(function() {
             document.body.style.color = window.getComputedStyle(animal).color;
-          }, 1500);
+          }, changeBgTimeout);
 
           oldIndex = newIndex;
           newIndex++;
 
-          if (newIndex === numberColors) {
+          if (newIndex === 8) {
             newIndex = 0;
           }
         }
 
-        setTimeout(function() {
-          changeAnimal();
-
-          setInterval(function() {
+        function startAnimation() {
+          setTimeout(function() {
             changeAnimal();
-          }, animationDuration);
-        }, animationDuration / 4 + animationDelay);
+          }, changeAnimalTimeout);
+        }
+
+        animal.addEventListener("animationiteration", function(e) {
+          startAnimation();
+        });
+
+        setTimeout(function() {
+          startAnimation();
+        }, animationDelay);
       </script>
 
   </body>
