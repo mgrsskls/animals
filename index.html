@@ -83,12 +83,16 @@
           bottom: -10em;
           left: 0;
           right: 0;
+        }
+        .animated.animal-container::after {
           animation-name: shadow;
         }
         .animal {
           height: 100%;
           font-size: inherit;
           position: relative;
+        }
+        .animated .animal {
           animation-name: fly;
         }
         .animal-container::after,
@@ -359,7 +363,7 @@
     </head>
     <body>
 
-      <div class="animal-container">
+      <div class="animal-container" id="animal-container">
         <div class="animal animal1" id="animal">
           <div class="animal__tile"></div>
           <div class="animal__tile"></div>
@@ -369,7 +373,8 @@
       </div>
 
       <script>
-        var animal              = document.getElementById('animal'),
+        var animalContainer     = document.getElementById('animal-container'),
+            animal              = document.getElementById('animal'),
             computedStyle       = window.getComputedStyle(animal),
             animationDuration   = parseInt(computedStyle['animation-duration'], 10) * 1000,
             animationDelay      = parseInt(computedStyle['animation-delay'], 10) * 1000,
@@ -407,7 +412,19 @@
         setTimeout(function() {
           startAnimation();
         }, animationDelay);
+
+        animalContainer.classList.add("animated");
       </script>
 
+      <noscript>
+        <style>
+          .animal-container::after {
+            animation-name: shadow;
+          }
+          .animal {
+            animation-name: fly;
+          }
+        </style>
+      </noscript>
   </body>
 </html>
