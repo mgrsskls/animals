@@ -46,30 +46,58 @@
           height: 100%;
         }
 
-        body {
-          background: currentColor radial-gradient(at bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
-          color: #a9661e;
+        :root {
+          --color1: #a9661e;
+          --color2: #e76132;
+          --color3: #eea800;
+          --color4: #4bba3d;
+          --color5: #1b69aa;
+          --color6: #360a4d;
+          --color7: #7a2a49;
+          --color8: #a06050;
+          --delay: 1s;
+          --duration: 8s;
+          --durationTotal: 64s;
+        }
+
+        @keyframes bg {
+             0% { background-color: var(--color1); }
+          12.5% { background-color: var(--color2); }
+          25%   { background-color: var(--color3); }
+          37.5% { background-color: var(--color4); }
+          50%   { background-color: var(--color5); }
+          62.5% { background-color: var(--color6); }
+          75%   { background-color: var(--color7); }
+          82.5% { background-color: var(--color8); }
+        }
+
+        html {
+          background: var(--color1) radial-gradient(at bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
           box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
-          transition: all 3.6s ease;
+          animation: bg var(--durationTotal) 4.6s infinite;
         }
 
         @keyframes fly {
-          5% { transform: translateY(10%); }
+          5%  { transform: translateY(10%); }
           15% { transform: translateY(-30%) rotateY(-90deg); }
           45% { transform: translateY(10%); }
         }
 
         @keyframes shadow {
-          5% { transform: scale(1.1); }
+          5%  { transform: scale(1.1); }
           15% { transform: scale(0.7); opacity: .7; }
           45% { transform: scale(1.1); }
         }
 
+        @keyframes change {
+          12.5% { opacity: 1; }
+        }
+
         .animal-container {
-          width: 35vh;
-          height: 35vh;
+          width: 18em;
+          height: 18em;
           position: absolute;
-          bottom: 35vh;
+          bottom: 18em;
           left: 50%;
           transform: translateX(-50%);
           font-size: 2vh;
@@ -83,19 +111,16 @@
           bottom: -10em;
           left: 0;
           right: 0;
-          animation-name: shadow;
+          animation: shadow var(--duration) var(--delay) infinite;
         }
         .animal {
-          height: 100%;
-          font-size: inherit;
-          position: relative;
-          animation-name: fly;
-        }
-        .animal-container::after,
-        .animal {
-          animation-duration: 6s;
-          animation-iteration-count: infinite;
-          animation-delay: 1s;
+          opacity: 0;
+          animation: fly var(--duration) var(--delay) infinite, change var(--durationTotal) steps(1, start) infinite;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
         }
         .animal__tile {
           width: 50%;
@@ -135,7 +160,8 @@
 
         /* +animal1 */
         .animal1 {
-          color: #a9661e;
+          color: var(--color1);
+          animation-delay: var(--delay), -5.8s;
         }
         .animal1 .animal__tile:nth-child(1)::before {
           transform: translateX(-50%);
@@ -173,7 +199,8 @@
 
         /* +animal2 */
         .animal2 {
-          color: #e76132;
+          color: var(--color2);
+          animation-delay: var(--delay), 2.2s;
         }
         .animal2 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%);
@@ -193,7 +220,8 @@
 
         /* +animal3 */
         .animal3 {
-          color: #eea800;
+          color: var(--color3);
+          animation-delay: var(--delay), 10.2s;
         }
         .animal3 .animal__tile:nth-child(1)::before {
           transform: translateX(-50%);
@@ -223,7 +251,8 @@
 
         /* +animal4 */
         .animal4 {
-          color: #4bba3d;
+          color: var(--color4);
+          animation-delay: var(--delay), 18.2s;
         }
         .animal4 .animal__tile:nth-child(1)::before {
           opacity: .7;
@@ -245,7 +274,8 @@
 
         /* +animal5 */
         .animal5 {
-          color: #1b69aa;
+          color: var(--color5);
+          animation-delay: var(--delay), 26.2s;
         }
         .animal5 .animal__tile:nth-child(1)::before {
           transform: translateX(-50%) translateY(-50%);
@@ -268,7 +298,8 @@
 
         /* +animal6 */
         .animal6 {
-          color: #360a4d;
+          color: var(--color6);
+          animation-delay: var(--delay), 34.2s;
         }
         .animal6 .animal__tile:nth-child(1)::before {
           display: none;
@@ -295,7 +326,8 @@
 
         /* +animal7 */
         .animal7 {
-          color: #7a2a49;
+          color: var(--color7);
+          animation-delay: var(--delay), 42.2s;
         }
         .animal7 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%) translateY(-50%);
@@ -322,7 +354,8 @@
 
         /* +animal8 */
         .animal8 {
-          color: #a06050;
+          color: var(--color8);
+          animation-delay: var(--delay), 50.2s;
         }
         .animal8 .animal__tile:nth-child(2)::before {
           transform: translateX(-50%);
@@ -353,57 +386,54 @@
         }
       </style>
     </head>
-    <body>
-
-      <div class="animal-container">
-        <div class="animal animal1" id="animal">
-          <div class="animal__tile"></div>
-          <div class="animal__tile"></div>
-          <div class="animal__tile"></div>
-          <div class="animal__tile"></div>
-        </div>
+    <body class="animal-container">
+      <div class="animal animal1">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
       </div>
-
-      <script>
-        var animal              = document.getElementById('animal'),
-            computedStyle       = window.getComputedStyle(animal),
-            animationDuration   = parseInt(computedStyle['animation-duration'], 10) * 1000,
-            animationDelay      = parseInt(computedStyle['animation-delay'], 10) * 1000,
-            changeAnimalTimeout = animationDuration * 0.15,
-            changeBgTimeout     = animationDuration * 0.45 - changeAnimalTimeout,
-            oldIndex            = 0,
-            newIndex            = oldIndex + 1;
-
-        function changeAnimal() {
-          animal.classList.remove('animal' + parseInt(oldIndex + 1, 10))
-          animal.classList.add('animal' + parseInt(newIndex + 1, 10));
-
-          setTimeout(function() {
-            document.body.style.color = window.getComputedStyle(animal).color;
-          }, changeBgTimeout);
-
-          oldIndex = newIndex;
-          newIndex++;
-
-          if (newIndex === 8) {
-            newIndex = 0;
-          }
-        }
-
-        function startAnimation() {
-          setTimeout(function() {
-            changeAnimal();
-          }, changeAnimalTimeout);
-        }
-
-        animal.addEventListener("animationiteration", function(e) {
-          startAnimation();
-        });
-
-        setTimeout(function() {
-          startAnimation();
-        }, animationDelay);
-      </script>
-
+      <div class="animal animal2">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal3">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal4">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal5">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal6">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal7">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal8">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
   </body>
 </html>
