@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Michael Großklaus - Freelancing frontend-developer Hamburg</title>
-    <meta name="description" content="I'm a freelancing frontend-developer based in Hamburg, Germany. You can hire me for HTML, CSS and JavaScript jobs.">
+    <title>animals - by Michael Großklaus</title>
+    <meta name="description" content="Animals animated with CSS only.">
     <meta name="viewport" content="initial-scale=1">
     <link rel="canonical" href="https://animals.mgrossklaus.de/">
 
@@ -13,19 +13,7 @@
        License: none (public domain)
       */
 
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed,
-      figure, figcaption, footer, header, hgroup,
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video {
+      html, body, div, a, ul, li {
         margin: 0;
         padding: 0;
         border: 0;
@@ -33,12 +21,8 @@
         font: inherit;
         vertical-align: baseline;
       }
-      ol, ul {
+      ul {
         list-style: none;
-      }
-      svg {
-        display: block;
-        margin: 0 auto;
       }
 
       html,
@@ -71,7 +55,7 @@
         82.5% { background-color: var(--color8); }
       }
 
-      html {
+      body {
         background: var(--color1) radial-gradient(at bottom, rgba(255,255,255,.5), rgba(255,255,255,0));
         box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
         animation: bg var(--durationTotal) 4.6s infinite;
@@ -384,56 +368,89 @@
         top: 45%;
         left: 50%;
       }
+
+      .links {
+        position: absolute;
+        bottom: 1em;
+        right: 1em;
+        display: none;
+        color: #fff;
+      }
+      body:hover .links {
+        display: block;
+      }
+      .links__item {
+        float: left;
+        font: 1rem/1.5em Helvetica, Arial, sans-serif;
+      }
+      .links__item:not(:first-child) {
+        margin: 0 0 0 .5em;
+      }
+      .links__item:not(:first-child)::before {
+        content: '/';
+        display: inline;
+        padding: 0 .5em 0 0;
+        opacity: .5;
+      }
+      .link {
+        color: inherit;
+      }
     </style>
   </head>
-  <body class="animal-container">
-    <div class="animal animal1">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
+  <body>
+    <div class="animal-container">
+      <div class="animal animal1">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal2">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal3">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal4">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal5">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal6">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal7">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
+      <div class="animal animal8">
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+        <div class="animal__tile"></div>
+      </div>
     </div>
-    <div class="animal animal2">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
-    <div class="animal animal3">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
-    <div class="animal animal4">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
-    <div class="animal animal5">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
-    <div class="animal animal6">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
-    <div class="animal animal7">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
-    <div class="animal animal8">
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-      <div class="animal__tile"></div>
-    </div>
+    <ul class="links">
+      <li class="links__item"><a target="_blank" class="link" href="https://github.com/mgrossklaus/animals">GitHub</a></li>
+      <li class="links__item"><a target="_blank" class="link" href="https://www.mgrossklaus.de" title="Michael Großklaus - Freelancing frontend-developer Hamburg">mgrossklaus.de</a></li>
+    </ul>
   </body>
 </html>
