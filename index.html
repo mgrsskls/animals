@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>animals - by Michael Großklaus</title>
-    <meta name="description" content="Animals animated with CSS only.">
+    <meta name="description" content="Animals animated with CSS only. Inspired by animodul.">
     <meta name="viewport" content="initial-scale=1">
     <link rel="canonical" href="https://animals.mgrossklaus.de/">
 
@@ -31,46 +31,25 @@
       }
 
       :root {
-        --color1: #8f192f;
-        --color1s: #681625;
-        --color2: #b8461d;
-        --color2s: #963512;
-        --color3: #c88d00;
-        --color3s: #a67708;
-        --color4: #b0aa11;
-        --color4s: #7e7a10;
-        --color5: #409235;
-        --color5s: #37782f;
-        --color6: #1d8f86;
-        --color6s: #19615b;
-        --color7: #1f719c;
-        --color7s: #1f4356;
-        --color8: #523074;
-        --color8s: #352140;
-        --color9: #84256f;
-        --color9s: #501c30;
-        --color10: #981b53;
-        --color10s: #6d1b3b;
         --delay: 1s;
         --duration: 8s;
         --durationTotal: 80s;
       }
 
       @keyframes bg {
-         0% { background-color: var(--color6s); }
-        10% { background-color: var(--color7s); }
-        20% { background-color: var(--color8s); }
-        30% { background-color: var(--color9s); }
-        40% { background-color: var(--color10s); }
-        50% { background-color: var(--color1s); }
-        60% { background-color: var(--color2s); }
-        70% { background-color: var(--color3s); }
-        80% { background-color: var(--color4s); }
-        90% { background-color: var(--color5s); }
+        10% { background-color: #1f4356; }
+        20% { background-color: #352140; }
+        30% { background-color: #501c30; }
+        40% { background-color: #6d1b3b; }
+        50% { background-color: #681625; }
+        60% { background-color: #963512; }
+        70% { background-color: #a67708; }
+        80% { background-color: #7e7a10; }
+        90% { background-color: #37782f; }
       }
 
       body {
-        background: var(--color6s) radial-gradient(at bottom, rgba(255,255,255,.45), rgba(255,255,255,0));
+        background: #19615b radial-gradient(at bottom, rgba(255,255,255,.45), rgba(255,255,255,0));
         box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
         animation: bg var(--durationTotal) 4.6s infinite;
       }
@@ -158,7 +137,7 @@
 
       /* +animal1 */
       .animal1 {
-        color: var(--color1);
+        color: #8f192f;
         animation-delay: var(--delay), -5.8s;
       }
       .animal1 .animal__tile:nth-child(1)::before {
@@ -197,28 +176,41 @@
 
       /* +animal2 */
       .animal2 {
-        color: var(--color2);
+        color: #b8461d;
         animation-delay: var(--delay), 2.2s;
       }
+      .animal2 .animal__tile:nth-child(1) {
+        opacity: 0;
+      }
       .animal2 .animal__tile:nth-child(2)::before {
-        transform: translateX(-50%);
       }
       .animal2 .animal__tile:nth-child(3)::before {
-        transform: translateX(-50%) translateY(-50%);
         opacity: .8;
       }
       .animal2 .animal__tile:nth-child(4)::before {
         transform: translateX(-50%) translateY(-50%);
       }
-      .animal2::after {
+      .animal2::before,
+      .animal2::after,
+      .animal2 .animal__tile:nth-child(3)::after {
         opacity: 1;
+      }
+      .animal2::before {
+        bottom: 0%;
         left: -1.5%;
+      }
+      .animal2::after {
+        top: 80%;
+        left: 15%;
+      }
+      .animal2 .animal__tile:nth-child(3)::after {
         top: 60%;
+        left: 50%;
       }
 
       /* +animal3 */
       .animal3 {
-        color: var(--color3);
+        color: #c88d00;
         animation-delay: var(--delay), 10.2s;
       }
       .animal3 .animal__tile:nth-child(1)::before {
@@ -249,7 +241,7 @@
 
       /* +animal4 */
       .animal4 {
-        color: var(--color4);
+        color: #b0aa11;
         animation-delay: var(--delay), 18.2s;
       }
       .animal4 .animal__tile:nth-child(1)::before {
@@ -272,7 +264,7 @@
 
       /* +animal5 */
       .animal5 {
-        color: var(--color5);
+        color: #409235;
         animation-delay: var(--delay), 26.2s;
       }
       .animal5 .animal__tile:nth-child(1)::before {
@@ -296,157 +288,142 @@
 
       /* +animal6 */
       .animal6 {
-        color: var(--color6);
+        color: #1d8f86;
         animation-delay: var(--delay), 34.2s;
       }
       .animal6 .animal__tile:nth-child(1)::before {
-        display: none;
+        transform: translateX(-50%);
+      }
+      .animal6 .animal__tile:nth-child(3)::before,
+      .animal6 .animal__tile:nth-child(4)::before {
+        opacity: .8;
+      }
+      .animal6 .animal__tile:nth-child(3)::before {
+        transform: translateX(-50%) translateY(-50%);
       }
       .animal6 .animal__tile:nth-child(4)::before {
         transform: translateY(-50%);
-        opacity: .8;
       }
-      .animal6 .animal__tile:nth-child(4)::before {
-        transform: translateX(-50%) translateY(-50%);
-      }
-      .animal6::after,
-      .animal6::before {
+      .animal6 .animal__tile:nth-child(1)::after,
+      .animal6 .animal__tile:nth-child(2)::after {
+        top: 35%;
         opacity: 1;
       }
-      .animal6::after {
-        left: 45%;
-        top: 40%;
+      .animal6 .animal__tile:nth-child(1)::after {
+        left: 85%;
       }
-      .animal6::before{
-        left: 40%;
-        top: 45%;
+      .animal6 .animal__tile:nth-child(2)::after {
+        right: 85%;
       }
 
       /* +animal7 */
       .animal7 {
-        color: var(--color7);
+        color: #1f719c;
         animation-delay: var(--delay), 42.2s;
       }
       .animal7 .animal__tile:nth-child(2)::before {
+        transform: translateX(-50%);
+      }
+      .animal7 .animal__tile:nth-child(3)::before {
         transform: translateX(-50%) translateY(-50%);
         opacity: .8;
       }
-      .animal7 .animal__tile:nth-child(3)::before {
-        transform: translateY(-50%);
-      }
       .animal7 .animal__tile:nth-child(4)::before {
-        display: none;
-      }
-      .animal7::after,
-      .animal7 .animal__tile:nth-child(2)::after {
-        opacity: 1;
+        transform: translateX(-50%) translateY(-50%);
       }
       .animal7::after {
-        top: -1.5%;
-        right: -1.5%;
-      }
-      .animal7 .animal__tile:nth-child(2)::after {
-        top: 20%;
-        left: 20%;
+        opacity: 1;
+        left: -1.5%;
+        top: 60%;
       }
 
       /* +animal8 */
       .animal8 {
-        color: var(--color8);
+        color: #523074;
         animation-delay: var(--delay), 50.2s;
       }
       .animal8 .animal__tile:nth-child(2)::before {
-        transform: translateX(-50%);
-      }
-      .animal8 .animal__tile:nth-child(3)::before {
         transform: translateX(-50%) translateY(-50%);
         opacity: .8;
       }
-      .animal8 .animal__tile:nth-child(4)::before {
-        transform: translateX(-50%) translateY(-50%);
+      .animal8 .animal__tile:nth-child(3)::before {
+        transform: translateY(-50%);
       }
-      .animal8::before,
+      .animal8 .animal__tile:nth-child(4)::before {
+        display: none;
+      }
       .animal8::after,
-      .animal8 .animal__tile:nth-child(3)::after {
+      .animal8 .animal__tile:nth-child(2)::after {
         opacity: 1;
       }
-      .animal8::before {
-        bottom: -1.5%;
-        left: -1.5%;
-      }
       .animal8::after {
-        top: 72.5%;
-        left: 12.5%;
+        top: -1.5%;
+        right: -1.5%;
       }
-      .animal8 .animal__tile:nth-child(3)::after {
-        top: 45%;
-        left: 50%;
+      .animal8 .animal__tile:nth-child(2)::after {
+        top: 20%;
+        left: 20%;
       }
 
       /* +animal9 */
       .animal9 {
-        color: var(--color9);
+        color: #84256f;
         animation-delay: var(--delay), 58.2s;
       }
       .animal9 .animal__tile:nth-child(1)::before {
-        transform: translateX(-50%);
-      }
-      .animal9 .animal__tile:nth-child(2) {
         display: none;
       }
-      .animal9 .animal__tile:nth-child(3)::before {
+      .animal9 .animal__tile:nth-child(4)::before {
         transform: translateY(-50%);
+        opacity: .8;
       }
       .animal9 .animal__tile:nth-child(4)::before {
-        transform: translateX(-50%);
-        opacity: .8;
-      }
-      .animal9::before,
-      .animal9::after,
-      .animal9 .animal__tile:nth-child(4)::after {
-        opacity: 1;
-      }
-      .animal9::before {
-        bottom: 0%;
-        right: -1.5%;
-      }
-      .animal9::after {
-        top: 80%;
-        right: 15%;
-      }
-      .animal9 .animal__tile:nth-child(4)::after {
-        top: 60%;
-        right: 50%;
-      }
-
-      /* +animal10 */
-      .animal10 {
-        color: var(--color10);
-        animation-delay: var(--delay), 66.2s;
-      }
-      .animal10 .animal__tile:nth-child(1)::before {
-        transform: translateX(-50%);
-      }
-      .animal10 .animal__tile:nth-child(3)::before,
-      .animal10 .animal__tile:nth-child(4)::before {
-        opacity: .8;
-      }
-      .animal10 .animal__tile:nth-child(3)::before {
         transform: translateX(-50%) translateY(-50%);
       }
-      .animal10 .animal__tile:nth-child(4)::before {
-        transform: translateY(-50%);
-      }
-      .animal10 .animal__tile:nth-child(1)::after,
-      .animal10 .animal__tile:nth-child(2)::after {
-        top: 35%;
+      .animal9::after,
+      .animal9::before {
         opacity: 1;
       }
-      .animal10 .animal__tile:nth-child(1)::after {
-        left: 85%;
+      .animal9::after {
+        left: 45%;
+        top: 40%;
       }
-      .animal10 .animal__tile:nth-child(2)::after {
-        right: 85%;
+      .animal9::before{
+        left: 40%;
+        top: 45%;
+      }
+
+      /* +animal0 */
+      .animal0 {
+        color: #981b53;
+        animation-delay: var(--delay), 66.2s;
+      }
+      .animal0 .animal__tile:nth-child(2)::before {
+        transform: translateX(-50%);
+      }
+      .animal0 .animal__tile:nth-child(3)::before {
+        transform: translateY(-50%);
+      }
+      .animal0 .animal__tile:nth-child(4)::before {
+        transform: translateY(-50%);
+        opacity: .8;
+      }
+      .animal0::before,
+      .animal0::after,
+      .animal0 .animal__tile:nth-child(4)::after {
+        opacity: 1;
+      }
+      .animal0::before {
+        bottom: -1.5%;
+        right: -1.5%;
+      }
+      .animal0::after {
+        top: 72.5%;
+        left: 75%;
+      }
+      .animal0 .animal__tile:nth-child(4)::after {
+        top: 45%;
+        left: 75%;
       }
 
       .links {
@@ -555,7 +532,7 @@
         <div class="animal__tile"></div>
         <div class="animal__tile"></div>
       </div>
-      <div class="animal animal10">
+      <div class="animal animal0">
         <div class="animal__tile"></div>
         <div class="animal__tile"></div>
         <div class="animal__tile"></div>
