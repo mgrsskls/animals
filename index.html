@@ -54,7 +54,7 @@
         animation: bg var(--durationTotal) 4.6s infinite;
       }
 
-      @keyframes fly {
+      @keyframes animal {
         5%  { transform: translateY(10%); }
         15% { transform: translateY(-30%) rotateY(-90deg); }
         45% { transform: translateY(10%); }
@@ -92,7 +92,7 @@
       }
       .animal {
         opacity: 0;
-        animation: fly var(--duration) var(--delay) infinite, change var(--durationTotal) steps(1, start) infinite;
+        animation: animal var(--duration) var(--delay) infinite, change var(--durationTotal) steps(1, start) infinite;
         position: absolute;
         top: 0;
         bottom: 0;
