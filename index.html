@@ -142,6 +142,16 @@
 
       .animal::before,
       .animal::after,
+      .animal__tile,
+      .animal__tile div,
+      .animal__tile div::before,
+      .animal__tile div::after {
+        animation-duration: var(--duration);
+        animation-iteration-count: infinite;
+      }
+
+      .animal::before,
+      .animal::after,
       .animal__tile div::before,
       .animal__tile div::after {
         width: .8em;
@@ -174,10 +184,10 @@
         transform-origin: bottom;
       }
       .animal1 .animal__tile:nth-child(1) {
-        animation: animal1ear1 var(--duration) infinite;
+        animation-name: animal1ear1;
       }
       .animal1 .animal__tile:nth-child(2) {
-        animation: animal1ear2 var(--duration) infinite;
+        animation-name: animal1ear2;
       }
       .animal1 .animal__tile:nth-child(1) div {
         transform: translateX(-50%);
@@ -231,7 +241,7 @@
       .animal2 .animal__tile:nth-child(3) div {
         -webkit-filter: brightness(1.1);
         filter: brightness(1.1);
-        animation: animal2head var(--duration) -3s infinite;
+        animation-name: animal2head;
         transform-origin: right;
       }
       .animal2 .animal__tile:nth-child(4) div {
@@ -251,7 +261,7 @@
       .animal2::before {
         bottom: -1%;
         left: -2.5%;
-        animation: animal2nose var(--duration) -3s infinite;
+        animation-name: animal2nose;
       }
       .animal2 .animal__tile:nth-child(3) div::before,
       .animal2 .animal__tile:nth-child(3) div::after {
@@ -262,6 +272,10 @@
       }
       .animal2 .animal__tile:nth-child(3) div::after {
         left: 25%;
+      }
+      .animal2 .animal__tile:nth-child(3) div,
+      .animal2::before {
+        animation-delay: -3s;
       }
 
       /* +animal3 */
@@ -291,7 +305,8 @@
         44% { transform: scaleY(1); -webkit-filter: brightness(1); filter: brightness(1); }
       }
       .animal3 .animal__tile:nth-child(1) {
-        animation: animal3wing var(--duration) 4.2s infinite;
+        animation-name: animal3wing;
+        animation-delay: 4.2s;
         transform-origin: bottom;
       }
       .animal3 .animal__tile:nth-child(1) div {
@@ -363,10 +378,10 @@
         70% { transform: translateX(0); }
       }
       .animal4 .animal__tile:nth-child(1) {
-        animation: animal4head1 var(--duration) -1.5s infinite;
+        animation-name: animal4head1;
       }
       .animal4 .animal__tile:nth-child(2) {
-        animation: animal4head2 var(--duration) -1.5s infinite;
+        animation-name: animal4head2;
       }
       .animal4 .animal__tile:nth-child(1) div {
         -webkit-filter: brightness(1.1);
@@ -387,10 +402,15 @@
         transform: translateY(-50%);
       }
       .animal4::after {
-        animation: animal4eye var(--duration) -1.5s infinite;
+        animation-name: animal4eye;
         opacity: 1;
         top: 20%;
         left: 35%;
+      }
+      .animal4 .animal__tile:nth-child(1),
+      .animal4 .animal__tile:nth-child(2),
+      .animal4::after {
+        animation-delay: -1.5s;
       }
 
       /* +animal5 */
@@ -413,17 +433,21 @@
         50% { transform: scaleX(1); }
         75% { transform: scaleX(.9); }
       }
-      .animal5 .animal__tile:nth-child(1),
-      .animal5 .animal__tile:nth-child(4) {
-        animation: animal5fin var(--duration) -1.5s infinite;
+      .animal5 .animal__tile:nth-child(1) {
+        animation-name: animal5fin;
       }
       .animal5 .animal__tile:nth-child(3) {
-        animation: animal5body var(--duration) -1.5s infinite;
+        animation-name: animal5body;
         transform-origin: right;
       }
       .animal5 .animal__tile:nth-child(4) {
-        animation: animal5head var(--duration) -1.5s infinite;
+        animation-name: animal5head;
         transform-origin: left;
+      }
+      .animal5 .animal__tile:nth-child(1),
+      .animal5 .animal__tile:nth-child(3),
+      .animal5 .animal__tile:nth-child(4) {
+        animation-delay: -1.5s;
       }
       .animal5 .animal__tile:nth-child(1) div {
         transform: translateX(-50%) translateY(-50%);
@@ -472,7 +496,8 @@
         40% { transform: scaleX(1); }
       }
       .animal6 .animal__tile {
-        animation: animal6wings var(--duration) -3s infinite;
+        animation-name: animal6wings;
+        animation-delay: -3s;
       }
       .animal6 .animal__tile:nth-child(odd)  {
         transform-origin: right;
@@ -527,7 +552,7 @@
         filter: brightness(1.1);
       }
       .animal7 .animal__tile:nth-child(4) {
-        animation: animal7 ease-in-out var(--duration) infinite;
+        animation-name: animal7;
         transform-origin: top left;
       }
       .animal7 .animal__tile:nth-child(4) div {
@@ -562,7 +587,7 @@
         z-index: 1;
       }
       .animal8 .animal__tile:nth-child(2) {
-        animation: animal8head ease-in-out var(--duration) 1s infinite;
+        animation-name: animal8head;
         transform-origin: top left;
       }
       .animal8 .animal__tile:nth-child(2) div {
@@ -583,7 +608,11 @@
       .animal8::after {
         top: -1.5%;
         right: -1.5%;
-        animation: animal8nose ease-in-out var(--duration) 1s infinite;
+        animation-name: animal8nose;
+      }
+      .animal8 .animal__tile:nth-child(2),
+      .animal8::after {
+        animation-delay: 1s;
       }
       .animal8 .animal__tile:nth-child(2) div::after {
         top: 60%;
@@ -613,14 +642,18 @@
         display: none;
       }
       .animal9 .animal__tile:nth-child(2) div {
-        animation: animal9wing1 ease-in-out var(--duration) infinite;
-        transform: scale(.8);
+        animation-name: animal9wing1;
         transform-origin: left;
       }
       .animal9 .animal__tile:nth-child(3) div {
-        animation: animal9wing2 ease-in-out var(--duration) infinite;
-        transform: scale(.8);
+        animation-name: animal9wing2;
         transform-origin: top;
+      }
+      .animal9 .animal__tile:nth-child(2) div,
+      .animal9 .animal__tile:nth-child(3) div {
+        transform: scale(.8);
+        animation-duration: var(--duration);
+        animation-iteration-count: infinite;
       }
       .animal9 .animal__tile:nth-child(4) div {
         transform: translateY(-50%);
@@ -673,7 +706,7 @@
         75% { transform: none; }
       }
       .animal0 .animal__tile:nth-child(4) {
-        animation: animal0head ease-in-out var(--duration) -4s infinite;
+        animation-name: animal0head;
         transform-origin: top;
       }
       .animal0 .animal__tile:nth-child(4) div {
@@ -689,7 +722,11 @@
       .animal0::before {
         bottom: -1.5%;
         right: -1.5%;
-        animation: animal0nose ease-in-out var(--duration) -4s infinite;
+        animation-name: animal0nose;
+      }
+      .animal0 .animal__tile:nth-child(4),
+      .animal0::before {
+        animation-delay: -4s;
       }
       .animal0 .animal__tile:nth-child(4) div::before,
       .animal0 .animal__tile:nth-child(4) div::after {
