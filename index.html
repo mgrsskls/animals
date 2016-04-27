@@ -170,18 +170,19 @@
         animation-delay: var(--delay), -5.8s;
       }
       @keyframes animal1ear1 {
-       60% { transform: none; }
-       70% { transform: scaleY(1.1); }
-       90% { transform: scaleY(1.1); }
+       50% { transform: none; }
+       70% { transform: rotateX(120deg); }
+       87.5% { transform: rotateX(120deg); }
       }
       @keyframes animal1ear2 {
-       70% { transform: none; }
-       80% { transform: scaleY(1.2); }
-       90% { transform: scaleY(1.2); }
+       50% { transform: none; }
+       70% { transform: rotateX(110deg); }
+       90% { transform: rotateX(110deg); }
       }
       .animal1 .animal__tile:nth-child(1),
       .animal1 .animal__tile:nth-child(2) {
         transform-origin: bottom;
+        z-index: 1;
       }
       .animal1 .animal__tile:nth-child(1) {
         animation-name: animal1ear1;
@@ -230,10 +231,10 @@
         animation-delay: var(--delay), 2.2s;
       }
       @keyframes animal2head {
-         0% { transform: scaleX(1); }
-        10% { transform: scaleX(.9); }
-        20% { transform: scaleX(.9); }
-        35% { transform: scaleX(1); }
+         0% { transform: scaleX(1); -webkit-filter: brightness(1.1); filter: brightness(1.1); }
+        10% { transform: scaleX(.875); -webkit-filter: brightness(1.05); filter: brightness(1.05); }
+        20% { transform: scaleX(.875); -webkit-filter: brightness(1.05); filter: brightness(1.05); }
+        35% { transform: scaleX(1); -webkit-filter: brightness(1.1); filter: brightness(1.1); }
       }
       .animal2 .animal__tile:nth-child(1) {
         opacity: 0;
@@ -254,8 +255,8 @@
       }
       @keyframes animal2nose {
          0% { transform: translateX(0); }
-        10% { transform: translateX(3.75vh); }
-        20% { transform: translateX(3.75vh); }
+        10% { transform: translateX(4.75vh); }
+        20% { transform: translateX(4.75vh); }
         35% { transform: translateX(0); }
       }
       .animal2::before {
@@ -343,38 +344,38 @@
       }
       @keyframes animal4head1 {
         10% { transform: skewX(0) translateX(0) scaleX(1); }
-        12.5% { transform: skewX(3.5deg) translateX(-.5vh) scaleX(1.1); }
+        12.5% { transform: skewX(5deg) translateX(-.75vh) scaleX(1.1); }
         15% { transform: skewX(0) translateX(0) scaleX(1); }
-        17.5% { transform: skewX(3.5deg) translateX(-.5vh) scaleX(1.1); }
+        17.5% { transform: skewX(5deg) translateX(-.75vh) scaleX(1.1); }
         20% { transform: skewX(0) translateX(0) scaleX(1); }
         60% { transform: skewX(0) translateX(0) scaleX(1); }
-        62.5% { transform: skewX(3.5deg) translateX(-.5vh) scaleX(1.1); }
+        62.5% { transform: skewX(5deg) translateX(-.75vh) scaleX(1.1); }
         65% { transform: skewX(0) translateX(0) scaleX(1); }
-        67.5% { transform: skewX(3.5deg) translateX(-.5vh) scaleX(1.1); }
+        67.5% { transform: skewX(5deg) translateX(-.75vh) scaleX(1.1); }
         70% { transform: skewX(0) translateX(0) scaleX(1); }
       }
       @keyframes animal4head2 {
         10% { transform: skewX(0) translateX(0); }
-        12.5% { transform: skewX(3.5deg) translateX(-.5vh); }
+        12.5% { transform: skewX(5deg) translateX(-.75vh); }
         15% { transform: skewX(0) translateX(0); }
-        17.5% { transform: skewX(3.5deg) translateX(-.5vh); }
+        17.5% { transform: skewX(5deg) translateX(-.75vh); }
         20% { transform: skewX(0) translateX(0); }
         60% { transform: skewX(0) translateX(0); }
-        62.5% { transform: skewX(3.5deg) translateX(-.5vh); }
+        62.5% { transform: skewX(5deg) translateX(-.75vh); }
         65% { transform: skewX(0) translateX(0); }
-        67.5% { transform: skewX(3.5deg) translateX(-.5vh); }
+        67.5% { transform: skewX(5deg) translateX(-.75vh); }
         70% { transform: skewX(0) translateX(0); }
       }
       @keyframes animal4eye {
         10% { transform: translateX(0); }
-        12.5% { transform: translateX(-.5vh); }
+        12.5% { transform: translateX(-.75vh); }
         15% { transform: translateX(0); }
-        17.5% { transform: translateX(-.5vh); }
+        17.5% { transform: translateX(-.75vh); }
         20% { transform: translateX(0); }
         60% { transform: translateX(0); }
-        62.5% { transform: translateX(-.5vh); }
+        62.5% { transform: translateX(-.75vh); }
         65% { transform: translateX(0); }
-        67.5% { transform: translateX(-.5vh); }
+        67.5% { transform: translateX(-.75vh); }
         70% { transform: translateX(0); }
       }
       .animal4 .animal__tile:nth-child(1) {
@@ -537,11 +538,9 @@
         animation-delay: var(--delay), 42.2s;
       }
       @keyframes animal7 {
-        16.6% { transform: rotate(-10deg); }
-        33.4% { transform: rotate(0); }
-        50%   { transform: rotate(-15deg); }
-        66.6% { transform: rotate(0); }
-        83.4% { transform: rotate(-10deg); }
+        25% { transform: rotate(15deg); }
+        50% { transform: rotate(-5deg); }
+        75% { transform: rotate(20deg); }
       }
       .animal7 .animal__tile:nth-child(2) div {
         transform: translateX(-50%);
@@ -551,17 +550,28 @@
         -webkit-filter: brightness(1.1);
         filter: brightness(1.1);
       }
-      .animal7 .animal__tile:nth-child(4) {
+      .animal7 .animal__tile {
         animation-name: animal7;
+      }
+      .animal7 .animal__tile:nth-child(1) {
+        transform-origin: bottom right;
+      }
+      .animal7 .animal__tile:nth-child(2) {
+        transform-origin: bottom left;
+      }
+      .animal7 .animal__tile:nth-child(3) {
+        transform-origin: top right;
+      }
+      .animal7 .animal__tile:nth-child(3) div::after {
+        opacity: 1;
+        left: 55%;
+        top: 60%;
+      }
+      .animal7 .animal__tile:nth-child(4) {
         transform-origin: top left;
       }
       .animal7 .animal__tile:nth-child(4) div {
         transform: translateX(-50%) translateY(-50%);
-      }
-      .animal7::after {
-        opacity: 1;
-        left: -1.5%;
-        top: 60%;
       }
 
       /* +animal8 */
@@ -626,16 +636,16 @@
       }
       @keyframes animal9wing1 {
         16.6% { transform: scaleX(1.2); }
-        33.4% { transform: scale(.8); }
+        33.4% { transform: scale(.75); }
         50%   { transform: scaleX(1.2); }
-        66.6% { transform: scale(.8); }
+        66.6% { transform: scale(.75); }
         83.4% { transform: scaleX(1.2); }
       }
       @keyframes animal9wing2 {
         16.6% { transform: scaleY(1.2); }
-        33.4% { transform: scale(.8); }
+        33.4% { transform: scale(.75); }
         50%   { transform: scaleY(1.2); }
-        66.6% { transform: scale(.8); }
+        66.6% { transform: scale(.75); }
         83.4% { transform: scaleY(1.2); }
       }
       .animal9 .animal__tile:nth-child(1) div {
@@ -690,19 +700,19 @@
       @keyframes animal0head {
         10% { transform: scaleY(1.1); }
         25% { transform: scaleY(1.1); }
-        30% { transform: scaleY(1.1) skewX(5deg); }
-        45% { transform: scaleY(1.1) skewX(5deg); }
-        50% { transform: scaleY(1.1) skewX(-5deg); }
-        70% { transform: scaleY(1.1) skewX(-5deg); }
+        30% { transform: scaleY(1.1) skewX(10deg); }
+        45% { transform: scaleY(1.1) skewX(10deg); }
+        50% { transform: scaleY(1.1) skewX(-10deg); }
+        70% { transform: scaleY(1.1) skewX(-10deg); }
         75% { transform: none; }
       }
       @keyframes animal0nose {
         10% { transform: translate(0,2vh); }
         25% { transform: translate(0,2vh); }
-        30% { transform: translate(1.75vh,2vh); }
-        45% { transform: translate(1.75vh,2vh); }
-        50% { transform: translate(-1.75vh,2vh); }
-        70% { transform: translate(-1.75vh,2vh); }
+        30% { transform: translate(3vh,2vh); }
+        45% { transform: translate(3vh,2vh); }
+        50% { transform: translate(-3vh,2vh); }
+        70% { transform: translate(-3vh,2vh); }
         75% { transform: none; }
       }
       .animal0 .animal__tile:nth-child(4) {
