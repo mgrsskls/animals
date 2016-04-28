@@ -167,6 +167,7 @@ body {
  70% { transform: rotateX(110deg); }
  90% { transform: rotateX(110deg); }
 }
+$animal1eyesX: 38%;
 .animal1 {
   color: #8f192f;
   animation-delay: var(--delay), -5.8s;
@@ -194,7 +195,7 @@ body {
 
         &::after {
           opacity: 1;
-          top: 75%;
+          top: 73%;
         }
       }
     }
@@ -203,7 +204,7 @@ body {
         transform: translateY(-50%);
 
         &::after {
-          left: 40%;
+          left: #{$animal1eyesX};
         }
       }
     }
@@ -212,7 +213,7 @@ body {
         transform: translateX(-50%) translateY(-50%);
 
         &::after {
-          right: 40%;
+          right: #{$animal1eyesX};
         }
       }
     }
