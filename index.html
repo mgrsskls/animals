@@ -38,19 +38,19 @@
       }
 
       @keyframes bg {
-        10% { background-color: #1f4356; }
-        20% { background-color: #352140; }
-        30% { background-color: #501c30; }
-        40% { background-color: #6d1b3b; }
-        50% { background-color: #681625; }
-        60% { background-color: #963512; }
-        70% { background-color: #a67708; }
-        80% { background-color: #7e7a10; }
-        90% { background-color: #37782f; }
+        10% { background-color: #352140; }
+        20% { background-color: #501c30; }
+        30% { background-color: #6d1b3b; }
+        40% { background-color: #681625; }
+        50% { background-color: #963512; }
+        60% { background-color: #a67708; }
+        70% { background-color: #7e7a10; }
+        80% { background-color: #37782f; }
+        90% { background-color: #1f4356; }
       }
 
       body {
-        background: #19615b radial-gradient(at bottom, rgba(255,255,255,.45), rgba(255,255,255,0));
+        background: #1f4356 radial-gradient(at bottom, rgba(255,255,255,.45), rgba(255,255,255,0));
         box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
         animation: bg var(--durationTotal) 4.6s infinite;
       }
@@ -498,7 +498,7 @@
       }
       .animal6 .animal__tile {
         animation-name: animal6wings;
-        animation-delay: -3s;
+        animation-delay: -3.5s;
       }
       .animal6 .animal__tile:nth-child(odd)  {
         transform-origin: right;
@@ -538,8 +538,8 @@
         animation-delay: var(--delay), 42.2s;
       }
       @keyframes animal7 {
-        25% { transform: rotate(15deg); }
-        50% { transform: rotate(-5deg); }
+        25% { transform: rotate(20deg); }
+        50% { transform: rotate(-20deg); }
         75% { transform: rotate(20deg); }
       }
       .animal7 .animal__tile:nth-child(2) div {
@@ -552,6 +552,7 @@
       }
       .animal7 .animal__tile {
         animation-name: animal7;
+        animation-delay: 3s;
       }
       .animal7 .animal__tile:nth-child(1) {
         transform-origin: bottom right;
