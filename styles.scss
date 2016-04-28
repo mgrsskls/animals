@@ -1,0 +1,912 @@
+@mixin filter($p) {
+  -webkit-filter: $p;
+  filter: $p
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/
+ v2.0 | 20110126
+ License: none (public domain)
+*/
+
+html, body, div, a, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+ul {
+  list-style: none;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+:root {
+  --delay: 1s;
+  --duration: 8s;
+  --durationTotal: 80s;
+}
+
+@keyframes bg {
+  10% { background-color: #352140; }
+  20% { background-color: #501c30; }
+  30% { background-color: #6d1b3b; }
+  40% { background-color: #681625; }
+  50% { background-color: #963512; }
+  60% { background-color: #a67708; }
+  70% { background-color: #7e7a10; }
+  80% { background-color: #37782f; }
+  90% { background-color: #1f4356; }
+}
+
+body {
+  background: #1f4356 radial-gradient(at bottom, rgba(255,255,255,.45), rgba(255,255,255,0));
+  box-shadow: 0 0 20vh rgba(0,0,0,.5) inset;
+  animation: bg var(--durationTotal) 4.6s infinite;
+}
+
+@keyframes animal {
+  5%  { transform: translateY(10%); }
+  15% { transform: translateY(-30%) rotateY(-90deg); }
+  45% { transform: translateY(10%); }
+}
+
+@keyframes shadow {
+  5%  { transform: scale(1.1); }
+  15% { transform: scale(0.7); opacity: .7; }
+  45% { transform: scale(1.1); }
+}
+
+@keyframes change {
+  10% { opacity: 1; }
+}
+
+.animal-container {
+  width: 18em;
+  height: 18em;
+  position: absolute;
+  bottom: 18em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2vh;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 5em;
+    background: radial-gradient(rgba(0,0,0,.2), transparent 75%);
+    position: absolute;
+    bottom: -10em;
+    left: -25%;
+    right: -25%;
+    animation: shadow var(--duration) var(--delay) infinite;
+  }
+}
+.animal {
+  opacity: 0;
+  animation: animal var(--duration) var(--delay) infinite, change var(--durationTotal) steps(1, start) infinite;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.animal__tile {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  overflow: hidden;
+
+  &:nth-child(1) {
+    right: 50%;
+    bottom: 50%;
+  }
+  &:nth-child(2) {
+    left: 50%;
+    bottom: 50%;
+  }
+  &:nth-child(3) {
+    right: 50%;
+    top: 50%;
+  }
+  &:nth-child(4) {
+    left: 50%;
+    top: 50%;
+  }
+}
+.animal::before,
+.animal::after,
+.animal__circle,
+.animal__circle::before,
+.animal__circle::after {
+  content: '';
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+}
+.animal__circle {
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: currentColor;
+}
+.animal::before,
+.animal::after,
+.animal__tile,
+.animal__circle,
+.animal__circle::before,
+.animal__circle::after {
+  animation-duration: var(--duration);
+  animation-iteration-count: infinite;
+}
+.animal::before,
+.animal::after,
+.animal__circle::before,
+.animal__circle::after {
+  font-size: .8em;
+  width: 1em;
+  height: 1em;
+  background: #000;
+  opacity: 0;
+  z-index: 1;
+}
+
+/* +animal1 */
+@keyframes animal1ear1 {
+ 50% { transform: none; }
+ 70% { transform: rotateX(120deg); }
+ 87.5% { transform: rotateX(120deg); }
+}
+@keyframes animal1ear2 {
+ 50% { transform: none; }
+ 70% { transform: rotateX(110deg); }
+ 90% { transform: rotateX(110deg); }
+}
+.animal1 {
+  color: #8f192f;
+  animation-delay: var(--delay), -5.8s;
+
+  .animal__tile {
+    &:nth-child(1),
+    &:nth-child(2) {
+      transform-origin: bottom;
+      z-index: 1;
+    }
+    &:nth-child(1) {
+      animation-name: animal1ear1;
+
+      .animal__circle {
+        transform: translateX(-50%);
+      }
+    }
+    &:nth-child(2) {
+      animation-name: animal1ear2;
+    }
+    &:nth-child(3),
+    &:nth-child(4) {
+      .animal__circle {
+        @include filter(brightness(1.1));
+
+        &::after {
+          opacity: 1;
+          top: 75%;
+        }
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        transform: translateY(-50%);
+
+        &::after {
+          left: 40%;
+        }
+      }
+    }
+    &:nth-child(4) {
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+
+        &::after {
+          right: 40%;
+        }
+      }
+    }
+  }
+  &::after {
+    opacity: 1;
+    left: 50%;
+    top: 85%;
+    transform: translateX(-50%);
+  }
+}
+
+/* +animal2 */
+@keyframes animal2head {
+   0% { transform: scaleX(1); @include filter(brightness(1.1)); }
+  10% { transform: scaleX(.875); @include filter(brightness(1.05)); }
+  20% { transform: scaleX(.875); @include filter(brightness(1.05)); }
+  35% { transform: scaleX(1); @include filter(brightness(1.1)); }
+}
+@keyframes animal2nose {
+   0% { transform: translateX(0); }
+  10% { transform: translateX(4.75vh); }
+  20% { transform: translateX(4.75vh); }
+  35% { transform: translateX(0); }
+}
+$animal2delay: -3s;
+.animal2 {
+  color: #d37929;
+  animation-delay: var(--delay), 2.2s;
+
+  .animal__tile {
+    &:nth-child(1) {
+      opacity: 0;
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        @include filter(brightness(1.1));
+        animation-name: animal2head;
+        animation-delay: $animal2delay;
+        transform-origin: right;
+
+        &::before,
+        &::after {
+          opacity: 1;
+          top: 30%;
+        }
+        &::before {
+          left: 15%;
+        }
+        &::after {
+          left: 25%;
+        }
+      }
+    }
+    &:nth-child(4) {
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+
+  &::before {
+    opacity: 1;
+    bottom: -1%;
+    left: -2.5%;
+    animation-name: animal2nose;
+    animation-delay: $animal2delay;
+  }
+}
+
+/* +animal3 */
+@keyframes animal3wing {
+  0%    { transform: scaleY(1); @include filter(none); }
+  5%    { transform: scaleY(.8); @include filter(brightness(.975)); }
+  6.5%  { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  8%    { transform: scaleY(.8); @include filter(brightness(.975)); }
+  9.5%  { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  11%   { transform: scaleY(.8); @include filter(brightness(.975)); }
+  12.5% { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  14%   { transform: scaleY(.8); @include filter(brightness(.975)); }
+  15.5% { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  17%   { transform: scaleY(.8); @include filter(brightness(.975)); }
+  18.5% { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  20%   { transform: scaleY(.8); @include filter(brightness(.975)); }
+  21.5% { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  23%   { transform: scaleY(.8); @include filter(brightness(.975)); }
+  24.5% { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  26.5% { transform: scaleY(.8); @include filter(brightness(.975)); }
+  29%   { transform: scaleY(1.2); @include filter(brightness(1.025)); }
+  33.5% { transform: scaleY(.8); @include filter(brightness(.975)); }
+  44%   { transform: scaleY(1); @include filter(none); }
+}
+.animal3 {
+  color: #c88d00;
+  animation-delay: var(--delay), 10.2s;
+
+  .animal__tile {
+    &:nth-child(1) {
+      animation-name: animal3wing;
+      animation-delay: 4.2s;
+      transform-origin: bottom;
+
+      .animal__circle {
+        transform: translateX(-50%);
+      }
+    }
+    &:nth-child(2) {
+      .animal__circle {
+        transform: translateX(-50%);
+        @include filter(brightness(1.1));
+
+        &::after {
+          opacity: 1;
+          top: 30%;
+          left: 75%;
+        }
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        transform: translateY(-50%);
+      }
+    }
+    &:nth-child(4)  .animal__circle {
+      display: none;
+    }
+  }
+
+  &::after {
+    opacity: 1;
+    top: 50%;
+    right: -3%;
+  }
+}
+
+/* +animal4 */
+@mixin animal4animation($p1, $p2, $p3, $p4, $p5, $p6, $p7, $p8, $p9, $p10) {
+  10%   { transform: $p1 }
+  12.5% { transform: $p2 }
+  15%   { transform: $p3 }
+  17.5% { transform: $p4 }
+  20%   { transform: $p5 }
+  60%   { transform: $p6 }
+  62.5% { transform: $p7 }
+  65%   { transform: $p8 }
+  67.5% { transform: $p9 }
+  70%   { transform: $p10 }
+}
+@keyframes animal4head1 {
+  @include animal4animation(
+    skewX(0) translateX(0) scaleX(1),
+    skewX(5deg) translateX(-.75vh) scaleX(1.1),
+    skewX(0) translateX(0) scaleX(1),
+    skewX(5deg) translateX(-.75vh) scaleX(1.1),
+    skewX(0) translateX(0) scaleX(1),
+    skewX(0) translateX(0) scaleX(1),
+    skewX(5deg) translateX(-.75vh) scaleX(1.1),
+    skewX(0) translateX(0) scaleX(1),
+    skewX(5deg) translateX(-.75vh) scaleX(1.1),
+    skewX(0) translateX(0) scaleX(1)
+  );
+}
+@keyframes animal4head2 {
+  @include animal4animation(
+    skewX(0) translateX(0),
+    skewX(5deg) translateX(-.75vh),
+    skewX(0) translateX(0),
+    skewX(5deg) translateX(-.75vh),
+    skewX(0) translateX(0),
+    skewX(0) translateX(0),
+    skewX(5deg) translateX(-.75vh),
+    skewX(0) translateX(0),
+    skewX(5deg) translateX(-.75vh),
+    skewX(0) translateX(0)
+  )
+}
+@keyframes animal4eye {
+  @include animal4animation(
+    translateX(0),
+    translateX(-.75vh),
+    translateX(0),
+    translateX(-.75vh),
+    translateX(0),
+    translateX(0),
+    translateX(-.75vh),
+    translateX(0),
+    translateX(-.75vh),
+    translateX(0)
+  )
+}
+$animal4delay: -1.5s;
+.animal4 {
+  color: #b0aa11;
+  animation-delay: var(--delay), 18.2s;
+
+  .animal__tile {
+    &:nth-child(1),
+    &:nth-child(2) {
+      animation-delay: $animal4delay;
+    }
+    &:nth-child(1) {
+      animation-name: animal4head1;
+
+      .animal__circle {
+        @include filter(brightness(1.1));
+      }
+    }
+    &:nth-child(2) {
+      animation-name: animal4head2;
+
+      .animal__circle {
+        transform: translateX(-50%);
+      }
+    }
+    &:nth-child(3) .animal__circle {
+      display: none;
+    }
+    /* rendering bug in chrome */
+    &:nth-child(4) {
+      top: 49%;
+      height: 51%;
+
+      .animal__circle {
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &::after {
+    animation-name: animal4eye;
+    animation-delay: $animal4delay;
+    opacity: 1;
+    top: 20%;
+    left: 35%;
+  }
+}
+
+/* +animal5 */
+@mixin animal5animation($p1a, $p1b, $p2a, $p2b, $p3a, $p3b) {
+  25% { transform: $p1a; @include filter($p1b); }
+  50% { transform: $p2a; @include filter($p2b); }
+  75% { transform: $p3a; @include filter($p3b); }
+}
+@keyframes animal5fin {
+  @include animal5animation(
+    scaleX(.7), brightness(.95),
+    scaleX(1), brightness(1),
+    scaleX(.7), brightness(1.1)
+  );
+}
+@keyframes animal5body {
+  @include animal5animation(
+    scaleX(.85), brightness(1.1),
+    scaleX(1), brightness(1),
+    scaleX(.85), brightness(.95)
+  );
+}
+@keyframes animal5head {
+  @include animal5animation(
+    scaleX(.9), none,
+    scaleX(1), none,
+    scaleX(.9), none
+  );
+}
+.animal5 {
+  color: #52aa47;
+  animation-delay: var(--delay), 26.2s;
+
+  .animal__tile {
+    &:nth-child(1),
+    &:nth-child(3),
+    &:nth-child(4) {
+      animation-delay: -1.5s;
+    }
+    &:nth-child(1) {
+      animation-name: animal5fin;
+
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+    &:nth-child(2) {
+      display: none;
+    }
+    &:nth-child(3) {
+      animation-name: animal5body;
+      transform-origin: right;
+
+      .animal__circle {
+        transform: translateY(-50%);
+      }
+    }
+    &:nth-child(4) {
+      animation-name: animal5head;
+      transform-origin: left;
+
+      .animal__circle {
+        transform: translateX(-50%);
+        @include filter(brightness(1.1));
+
+        &::after {
+          opacity: 1;
+          left: 70%;
+          top: 25%;
+        }
+      }
+    }
+  }
+}
+
+/* +animal6 */
+@keyframes animal6wings {
+  0%    { transform: scaleX(1); }
+  5%    { transform: scaleX(.8); }
+  6.5%  { transform: scaleX(1); }
+  8%    { transform: scaleX(.8); }
+  9.5%  { transform: scaleX(1); }
+  11%   { transform: scaleX(.8); }
+  12.5% { transform: scaleX(1); }
+  14%   { transform: scaleX(.8); }
+  15.5% { transform: scaleX(1); }
+  17%   { transform: scaleX(.8); }
+  18.5% { transform: scaleX(1); }
+  20%   { transform: scaleX(.8); }
+  21.5% { transform: scaleX(1); }
+  23%   { transform: scaleX(.8); }
+  24.5% { transform: scaleX(1); }
+  26.5% { transform: scaleX(.8); }
+  29%   { transform: scaleX(1); }
+  32.5% { transform: scaleX(.8); }
+  40%   { transform: scaleX(1); }
+}
+.animal6 {
+  color: #1d8f86;
+  animation-delay: var(--delay), 34.2s;
+
+  .animal__tile {
+    animation-name: animal6wings;
+    animation-delay: -3.5s;
+
+    &:nth-child(odd)  {
+      transform-origin: right;
+    }
+    &:nth-child(even) {
+      transform-origin: left;
+    }
+    &:nth-child(1) {
+      .animal__circle {
+        transform: translateX(-50%);
+      }
+    }
+    &:nth-child(3),
+    &:nth-child(4) {
+      .animal__circle {
+        @include filter(brightness(1.1));
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+    &:nth-child(4) {
+      .animal__circle {
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    top: 12.5%;
+    opacity: 1;
+  }
+  &::before {
+    left: 42%;
+  }
+  &::after {
+    right: 42%;
+  }
+}
+
+/* +animal7 */
+@keyframes animal7 {
+  25% { transform: rotate(20deg); }
+  50% { transform: rotate(-20deg); }
+  75% { transform: rotate(20deg); }
+}
+.animal7 {
+  color: #2c6786;
+  animation-delay: var(--delay), 42.2s;
+
+  .animal__tile {
+    animation-name: animal7;
+    animation-delay: 3s;
+
+    &:nth-child(1) {
+      transform-origin: bottom right;
+    }
+    &:nth-child(2) {
+      transform-origin: bottom left;
+
+      .animal__circle {
+        transform: translateX(-50%);
+      }
+    }
+    &:nth-child(3) {
+      transform-origin: top right;
+
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+        @include filter(brightness(1.1));
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle::after {
+        opacity: 1;
+        left: 55%;
+        top: 60%;
+      }
+    }
+    &:nth-child(4) {
+      transform-origin: top left;
+
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+  }
+}
+
+/* +animal8 */
+@mixin animal8animation($p1, $p2, $p3, $p4, $p5) {
+  30% { transform: $p1; }
+  40% { transform: $p2; }
+  65% { transform: $p3; }
+  75% { transform: $p4; }
+  90% { transform: $p5; }
+}
+@keyframes animal8head {
+  @include animal8animation(
+    none,
+    rotate(15deg),
+    rotate(15deg),
+    rotate(25deg),
+    rotate(25deg)
+  );
+}
+@keyframes animal8nose {
+  @include animal8animation(
+    none,
+    translate(-.75vh,4.5vh),
+    translate(-.75vh,4.5vh),
+    translate(-1.75vh,7.5vh),
+    translate(-1.75vh,7.5vh)
+  );
+}
+$animal8delay: 1s;
+.animal8 {
+  color: #553773;
+  animation-delay: var(--delay), 50.2s;
+
+  .animal__tile {
+    &:nth-child(1) {
+      z-index: 1;
+    }
+    &:nth-child(2) {
+      animation-name: animal8head;
+      animation-delay: $animal8delay;
+      transform-origin: top left;
+
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+        @include filter(brightness(1.1));
+
+        &::after {
+          opacity: 1;
+          top: 60%;
+          left: 60%;
+        }
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        transform: translateY(-50%);
+      }
+    }
+    &:nth-child(4) .animal__circle {
+      display: none;
+    }
+  }
+
+  &::after {
+    opacity: 1;
+    top: -1.5%;
+    right: -1.5%;
+    animation-name: animal8nose;
+    animation-delay: $animal8delay;
+  }
+}
+
+/* +animal9 */
+@mixin animal9animation($p1, $p2, $p3, $p4, $p5) {
+  16.6% { transform: $p1; }
+  33.4% { transform: $p2; }
+  50%   { transform: $p3; }
+  66.6% { transform: $p4; }
+  83.4% { transform: $p5; }
+}
+@keyframes animal9wing1 {
+  @include animal9animation(
+    scaleX(1.2),
+    scale(.75),
+    scaleX(1.2),
+    scale(.75),
+    scaleX(1.2)
+  )
+}
+@keyframes animal9wing2 {
+  @include animal9animation(
+    scaleY(1.2),
+    scale(.75),
+    scaleY(1.2),
+    scale(.75),
+    scaleY(1.2)
+  )
+}
+.animal9 {
+  color: #84256f;
+  animation-delay: var(--delay), 58.2s;
+
+  .animal__tile {
+    &:nth-child(1) .animal__circle {
+      display: none;
+    }
+    &:nth-child(2),
+    &:nth-child(3) {
+      .animal__circle {
+        transform: scale(.8);
+        animation-duration: var(--duration);
+        animation-iteration-count: infinite;
+      }
+    }
+    &:nth-child(2) {
+      .animal__circle {
+        animation-name: animal9wing1;
+        transform-origin: left;
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        animation-name: animal9wing2;
+        transform-origin: top;
+      }
+    }
+    &:nth-child(4) {
+      .animal__circle {
+        transform: translateX(-50%) translateY(-50%);
+        @include filter(brightness(1.1));
+      }
+    }
+  }
+
+  &::after,
+  &::before {
+    opacity: 1;
+  }
+  &::after {
+    left: 45%;
+    top: 40%;
+  }
+  &::before{
+    left: 40%;
+    top: 45%;
+  }
+}
+
+/* +animal0 */
+@keyframes animal0head {
+  10% { transform: scaleY(1.1); }
+  25% { transform: scaleY(1.1); }
+  30% { transform: scaleY(1.1) skewX(10deg); }
+  45% { transform: scaleY(1.1) skewX(10deg); }
+  50% { transform: scaleY(1.1) skewX(-10deg); }
+  70% { transform: scaleY(1.1) skewX(-10deg); }
+  75% { transform: none; }
+}
+@keyframes animal0nose {
+  10% { transform: translate(0,2vh); }
+  25% { transform: translate(0,2vh); }
+  30% { transform: translate(3vh,2vh); }
+  45% { transform: translate(3vh,2vh); }
+  50% { transform: translate(-3vh,2vh); }
+  70% { transform: translate(-3vh,2vh); }
+  75% { transform: none; }
+}
+$animal0delay: -4s;
+.animal0 {
+  color: #992c5d;
+  animation-delay: var(--delay), 66.2s;
+
+  .animal__tile {
+    &:nth-child(2) {
+      .animal__circle {
+        transform: translateX(-50%);
+      }
+    }
+    &:nth-child(3) {
+      .animal__circle {
+        transform: translateY(-50%);
+      }
+    }
+    &:nth-child(4) {
+      animation-name: animal0head;
+      animation-delay: $animal0delay;
+      transform-origin: top;
+
+      .animal__circle {
+        transform: translateY(-50%);
+        @include filter(brightness(1.1));
+
+        &::before,
+        &::after {
+          opacity: 1;
+           top: 72.5%;
+        }
+        &::before {
+          left: 25%;
+        }
+        &::after {
+          left: 35%;
+        }
+      }
+    }
+  }
+
+  &::before {
+    opacity: 1;
+    bottom: -1.5%;
+    right: -1.5%;
+    animation-name: animal0nose;
+    animation-delay: $animal0delay;
+  }
+}
+
+.links {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  display: none;
+  color: #fff;
+  white-space: nowrap;
+}
+body:hover .links {
+  display: block;
+}
+.links__item {
+  float: left;
+  font: .875rem/1.5em Helvetica, Arial, sans-serif;
+
+  &:not(:first-child) {
+    margin: 0 0 0 .5em;
+
+    &::before {
+      content: '/';
+      display: inline;
+      padding: 0 .5em 0 0;
+      opacity: .5;
+    }
+  }
+}
+.link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dotted #fff;
+  background: linear-gradient(#fff, #fff) no-repeat;
+  background-size: 100% 0;
+  background-position: 0 1.25em;
+  position: relative;
+  padding: .2em .1em 0;
+  margin: 0 -.05em;
+  font-weight: bold;
+
+  &:hover {
+    color: #000;
+    background-size: 100%;
+    background-position: 0 .15em;
+    text-shadow: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  .links {
+    display: block;
+    right: auto;
+    left: 1em;
+  }
+}

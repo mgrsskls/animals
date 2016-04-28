@@ -1,5 +1,7 @@
 node_modules/
 data/
 dist/
+.sass-cache/
 gulpfile.js
 package.json
+styles.css*
