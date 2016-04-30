@@ -35,12 +35,12 @@ body {
   10% { background-color: #352140; }
   20% { background-color: #501c30; }
   30% { background-color: #6d1b3b; }
-  40% { background-color: #681625; }
-  50% { background-color: #963512; }
+  40% { background-color: #7c2b1e; }
+  50% { background-color: #964b0d; }
   60% { background-color: #a67708; }
   70% { background-color: #7e7a10; }
   80% { background-color: #37782f; }
-  90% { background-color: #1f4356; }
+  90% { background-color: #19615b; }
 }
 
 body {
@@ -65,7 +65,7 @@ body {
   10% { opacity: 1; }
 }
 
-.animal-container {
+.container {
   width: 18em;
   height: 18em;
   position: absolute;
@@ -95,6 +95,9 @@ body {
   left: 0;
   right: 0;
 }
+.animal__inner {
+  height: 100%;
+}
 .animal__tile {
   width: 50%;
   height: 50%;
@@ -118,8 +121,8 @@ body {
     top: 50%;
   }
 }
-.animal::before,
-.animal::after,
+.animal__inner::before,
+.animal__inner::after,
 .animal__circle,
 .animal__circle::before,
 .animal__circle::after {
@@ -135,8 +138,9 @@ body {
   height: 200%;
   background: currentColor;
 }
-.animal::before,
-.animal::after,
+.animal__inner,
+.animal__inner::before,
+.animal__inner::after,
 .animal__tile,
 .animal__circle,
 .animal__circle::before,
@@ -144,33 +148,45 @@ body {
   animation-duration: var(--duration);
   animation-iteration-count: infinite;
 }
-.animal::before,
-.animal::after,
-.animal__circle::before,
-.animal__circle::after {
-  font-size: .8em;
-  width: 1em;
-  height: 1em;
-  background: #000;
-  opacity: 0;
-  z-index: 1;
+.animal__inner,
+.animal__circle {
+  &::before,
+  &::after {
+    font-size: .8em;
+    width: 1em;
+    height: 1em;
+    background: #000;
+    opacity: 0;
+    z-index: 1;
+  }
 }
 
 /* +animal1 */
-@keyframes animal1ear1 {
- 50% { transform: none; }
- 70% { transform: rotateX(120deg); }
- 87.5% { transform: rotateX(120deg); }
-}
-@keyframes animal1ear2 {
- 50% { transform: none; }
- 70% { transform: rotateX(110deg); }
- 90% { transform: rotateX(110deg); }
+@keyframes animal1 {
+ 10% { transform: rotate(-20deg); }
+ 20% { transform: rotate(-20deg); }
+ 30% { transform: none; }
+ 40% { transform: none; }
+ 50% { transform: rotate(20deg); }
+ 60% { transform: rotate(20deg); }
+ 70% { transform: none; }
 }
 $animal1eyesX: 38%;
 .animal1 {
   color: #8f192f;
   animation-delay: var(--delay), -5.8s;
+
+  .animal__inner {
+    animation-name: animal1;
+    animation-delay: 3.5s;
+
+    &::after {
+      opacity: 1;
+      left: 50%;
+      top: 85%;
+      transform: translateX(-50%);
+    }
+  }
 
   .animal__tile {
     &:nth-child(1),
@@ -179,14 +195,9 @@ $animal1eyesX: 38%;
       z-index: 1;
     }
     &:nth-child(1) {
-      animation-name: animal1ear1;
-
       .animal__circle {
         transform: translateX(-50%);
       }
-    }
-    &:nth-child(2) {
-      animation-name: animal1ear2;
     }
     &:nth-child(3),
     &:nth-child(4) {
@@ -218,12 +229,6 @@ $animal1eyesX: 38%;
       }
     }
   }
-  &::after {
-    opacity: 1;
-    left: 50%;
-    top: 85%;
-    transform: translateX(-50%);
-  }
 }
 
 /* +animal2 */
@@ -243,6 +248,16 @@ $animal2delay: -3s;
 .animal2 {
   color: #d37929;
   animation-delay: var(--delay), 2.2s;
+
+  .animal__inner {
+    &::before {
+      opacity: 1;
+      bottom: -1%;
+      left: -2.5%;
+      animation-name: animal2nose;
+      animation-delay: $animal2delay;
+    }
+  }
 
   .animal__tile {
     &:nth-child(1) {
@@ -274,14 +289,6 @@ $animal2delay: -3s;
       }
     }
   }
-
-  &::before {
-    opacity: 1;
-    bottom: -1%;
-    left: -2.5%;
-    animation-name: animal2nose;
-    animation-delay: $animal2delay;
-  }
 }
 
 /* +animal3 */
@@ -310,10 +317,18 @@ $animal2delay: -3s;
   color: #c88d00;
   animation-delay: var(--delay), 10.2s;
 
+  .animal__inner {
+    &::after {
+      opacity: 1;
+      top: 50%;
+      right: -3%;
+    }
+  }
+
   .animal__tile {
     &:nth-child(1) {
       animation-name: animal3wing;
-      animation-delay: 4.2s;
+      animation-delay: 4.5s;
       transform-origin: bottom;
 
       .animal__circle {
@@ -340,12 +355,6 @@ $animal2delay: -3s;
     &:nth-child(4)  .animal__circle {
       display: none;
     }
-  }
-
-  &::after {
-    opacity: 1;
-    top: 50%;
-    right: -3%;
   }
 }
 
@@ -409,6 +418,16 @@ $animal4delay: -1.5s;
   color: #b0aa11;
   animation-delay: var(--delay), 18.2s;
 
+  .animal__inner {
+    &::after {
+      animation-name: animal4eye;
+      animation-delay: $animal4delay;
+      opacity: 1;
+      top: 20%;
+      left: 35%;
+    }
+  }
+
   .animal__tile {
     &:nth-child(1),
     &:nth-child(2) {
@@ -431,23 +450,11 @@ $animal4delay: -1.5s;
     &:nth-child(3) .animal__circle {
       display: none;
     }
-    /* rendering bug in chrome */
     &:nth-child(4) {
-      top: 49%;
-      height: 51%;
-
       .animal__circle {
         transform: translateY(-50%);
       }
     }
-  }
-
-  &::after {
-    animation-name: animal4eye;
-    animation-delay: $animal4delay;
-    opacity: 1;
-    top: 20%;
-    left: 35%;
   }
 }
 
@@ -550,6 +557,20 @@ $animal4delay: -1.5s;
   color: #1d8f86;
   animation-delay: var(--delay), 34.2s;
 
+  .animal__inner {
+    &::before,
+    &::after {
+      top: 12.5%;
+      opacity: 1;
+    }
+    &::before {
+      left: 42%;
+    }
+    &::after {
+      right: 42%;
+    }
+  }
+
   .animal__tile {
     animation-name: animal6wings;
     animation-delay: -3.5s;
@@ -582,18 +603,6 @@ $animal4delay: -1.5s;
       }
     }
   }
-
-  &::before,
-  &::after {
-    top: 12.5%;
-    opacity: 1;
-  }
-  &::before {
-    left: 42%;
-  }
-  &::after {
-    right: 42%;
-  }
 }
 
 /* +animal7 */
@@ -606,23 +615,18 @@ $animal4delay: -1.5s;
   color: #2c6786;
   animation-delay: var(--delay), 42.2s;
 
-  .animal__tile {
+  .animal__inner {
     animation-name: animal7;
     animation-delay: 3.5s;
+  }
 
-    &:nth-child(1) {
-      transform-origin: bottom right;
-    }
+  .animal__tile {
     &:nth-child(2) {
-      transform-origin: bottom left;
-
       .animal__circle {
         transform: translateX(-50%);
       }
     }
     &:nth-child(3) {
-      transform-origin: top right;
-
       .animal__circle {
         transform: translateX(-50%) translateY(-50%);
         @include filter(brightness(1.1));
@@ -636,8 +640,6 @@ $animal4delay: -1.5s;
       }
     }
     &:nth-child(4) {
-      transform-origin: top left;
-
       .animal__circle {
         transform: translateX(-50%) translateY(-50%);
       }
@@ -676,6 +678,16 @@ $animal8delay: 1s;
   color: #553773;
   animation-delay: var(--delay), 50.2s;
 
+  .animal__inner {
+    &::after {
+      opacity: 1;
+      top: -1.5%;
+      right: -1.5%;
+      animation-name: animal8nose;
+      animation-delay: $animal8delay;
+    }
+  }
+
   .animal__tile {
     &:nth-child(1) {
       z-index: 1;
@@ -704,14 +716,6 @@ $animal8delay: 1s;
     &:nth-child(4) .animal__circle {
       display: none;
     }
-  }
-
-  &::after {
-    opacity: 1;
-    top: -1.5%;
-    right: -1.5%;
-    animation-name: animal8nose;
-    animation-delay: $animal8delay;
   }
 }
 
@@ -745,6 +749,21 @@ $animal8delay: 1s;
   color: #84256f;
   animation-delay: var(--delay), 58.2s;
 
+  .animal__inner {
+    &::after,
+    &::before {
+      opacity: 1;
+    }
+    &::after {
+      left: 45%;
+      top: 40%;
+    }
+    &::before{
+      left: 40%;
+      top: 45%;
+    }
+  }
+
   .animal__tile {
     &:nth-child(1) .animal__circle {
       display: none;
@@ -776,19 +795,6 @@ $animal8delay: 1s;
       }
     }
   }
-
-  &::after,
-  &::before {
-    opacity: 1;
-  }
-  &::after {
-    left: 45%;
-    top: 40%;
-  }
-  &::before{
-    left: 40%;
-    top: 45%;
-  }
 }
 
 /* +animal0 */
@@ -799,6 +805,15 @@ $animal8delay: 1s;
   45% { transform: scaleY(1.1) skewX(10deg); }
   50% { transform: scaleY(1.1) skewX(-10deg); }
   70% { transform: scaleY(1.1) skewX(-10deg); }
+  75% { transform: none; }
+}
+@keyframes animal0eyes {
+  10% { transform: scaleY(.9); }
+  25% { transform: scaleY(.9); }
+  30% { transform: scaleY(.9) skewX(-10deg); }
+  45% { transform: scaleY(.9) skewX(-10deg); }
+  50% { transform: scaleY(.9) skewX(10deg); }
+  70% { transform: scaleY(.9) skewX(10deg); }
   75% { transform: none; }
 }
 @keyframes animal0nose {
@@ -814,6 +829,16 @@ $animal0delay: -4s;
 .animal0 {
   color: #992c5d;
   animation-delay: var(--delay), 66.2s;
+
+  .animal__inner {
+    &::before {
+      opacity: 1;
+      bottom: -1.5%;
+      right: -1.5%;
+      animation-name: animal0nose;
+      animation-delay: $animal0delay;
+    }
+  }
 
   .animal__tile {
     &:nth-child(2) {
@@ -837,8 +862,11 @@ $animal0delay: -4s;
 
         &::before,
         &::after {
+          animation-name: animal0eyes;
+          animation-delay: $animal0delay;
+          transform-origin: top;
           opacity: 1;
-           top: 72.5%;
+          top: 72.5%;
         }
         &::before {
           left: 25%;
@@ -848,14 +876,6 @@ $animal0delay: -4s;
         }
       }
     }
-  }
-
-  &::before {
-    opacity: 1;
-    bottom: -1.5%;
-    right: -1.5%;
-    animation-name: animal0nose;
-    animation-delay: $animal0delay;
   }
 }
 
