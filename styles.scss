@@ -483,11 +483,9 @@ $animal4delay: -1.5s;
   );
 }
 @keyframes animal5head {
-  @include animal5animation(
-    scaleX(.9), none,
-    scaleX(1), none,
-    scaleX(.9), none
-  );
+  15% { transform: scaleX(.8); }
+  60% { transform: none; }
+  85% { transform: scaleX(.8); }
 }
 .animal5 {
   color: #52aa47;
@@ -621,7 +619,7 @@ $animal4delay: -1.5s;
 
   .animal__inner {
     animation-name: animal7;
-    animation-delay: 3.5s;
+    animation-delay: 3s;
   }
 
   .animal__tile {
