@@ -1,6 +1,4 @@
-# animals.mgrossklaus.de
-
-[https://animals.mgrossklaus.de/](https://animals.mgrossklaus.de/) is completely build with html and css only using custom css properties.
+[https://mgrsskls.github.io/animals/](https://mgrsskls.github.io/animals/) is completely build with html and css only using custom css properties.
 
 Best view in Chrome.
 
